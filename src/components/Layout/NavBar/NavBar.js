@@ -11,7 +11,10 @@ import PeopleAltIcon from '@material-ui/icons/PeopleAlt';
 import LocalGasStationIcon from '@material-ui/icons/LocalGasStation';
 import DriveEtaIcon from '@material-ui/icons/DriveEta';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import AssistantPhotoIcon from '@material-ui/icons/AssistantPhoto';
+import AnnouncementIcon from '@material-ui/icons/Announcement';
 import LocalShippingIcon from '@material-ui/icons/LocalShipping';
+import DescriptionIcon from '@material-ui/icons/Description';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import EvStationIcon from '@material-ui/icons/EvStation';
 import DashboardIcon from '@material-ui/icons/Dashboard';
@@ -125,17 +128,17 @@ goToDashboard = () => {
                                      <PeopleAltIcon/>Utilisateurs
                                 </Button>
                                 <Button color="inherit" onClick={this.goToEvent}>
-                                     <DriveEtaIcon/> Evenements
+                                     <AnnouncementIcon/> Evenements
                                </Button>
                                
                                 <Button color="inherit" onClick={this.goToVehecule}>
                                      <DriveEtaIcon/> Vehicules
                                </Button> 
                                 <Button color="inherit" onClick={this.goToPatrouiller}>
-                                    <DriveEtaIcon/>Patrouilles
+                                    <LocalShippingIcon/>Patrouilles
                                 </Button>
                                 <Button color="inherit" onClick={this.goToRapports}>
-                                    <LocalGasStationIcon/>Rapports
+                                    <DescriptionIcon/>Rapports
                                 </Button>
 
                                 <Button color="inherit" onClick={this.goToLogout}>
@@ -150,13 +153,13 @@ goToDashboard = () => {
                                     <DashboardIcon/>Tableau de bord
                                 </Button>
                                         
+                                <Button color="inherit" onClick={this.goToEvent}>
+                                     <AnnouncementIcon/> Evenements
+                               </Button>
                                 <Button color="inherit" onClick={this.goToPatrouiller}>
-                                    <LocalGasStationIcon/>Patrouilles
+                                    <LocalShippingIcon/>Patrouilles
                                 </Button>
-                                                
-                                <Button color="inherit" onClick={this.goToPatrouilleur}>
-                                    <LocalGasStationIcon/>Patrouilleurs
-                                </Button>
+
                                         <Button color="inherit" onClick={this.goToLogout}>
                                             <ExitToAppIcon/>
                                             Deconnexion
@@ -167,9 +170,11 @@ goToDashboard = () => {
                                       <Button color="inherit" onClick={this.goToDashboard}>
                                     <DashboardIcon/>Tableau de bord
                                 </Button>
-                                        
+                                <Button color="inherit" onClick={this.goToEvent}>
+                                     <AnnouncementIcon/> Evenements
+                               </Button>
                                 <Button color="inherit" onClick={this.goToPatrouiller}>
-                                    <LocalGasStationIcon/>Patrouilles
+                                    <LocalShippingIcon/>Patrouilles
                                 </Button>
                                         <Button color="inherit" onClick={this.goToLogout}>
                                             <ExitToAppIcon/>
