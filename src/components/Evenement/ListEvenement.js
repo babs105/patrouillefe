@@ -48,8 +48,7 @@ const useStyles = makeStyles({
   },
   textField:{
     width:200,
-    marginLeft:20,
-    marginRight: 50,
+
     
   }  ,
   widthDialog:{
@@ -101,12 +100,12 @@ export default function ListCurrentEvent() {
 },[]); 
 
 
-useEffect(() => {
-  return () => {
-    clearInterval(intervalID);
-    alert("hopp fin");
-  }
-}, []);
+// useEffect(() => {
+//   return () => {
+//     clearInterval(intervalID);
+//     alert("hopp fin");
+//   }
+// }, []);
 
 
 const getUserPatrouilleurById = () => {
