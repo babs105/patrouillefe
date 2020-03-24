@@ -179,7 +179,7 @@ goToDashboard = () => {
                                         <Button color="inherit" onClick={this.goToLogout}>
                                             <ExitToAppIcon/>
                                             Deconnexion
-                                    </Button>
+                             </Button>
                          </div>
                          ):null
                         }
