@@ -6,7 +6,7 @@ import Container from '@material-ui/core/Container';
 
 const PublicRoutes = ({ match }) => (
 	<Fragment>
-		<Container>
+		{/* <Container> */}
 		<Switch>
 			{/* <Route path="/forgot-password" component={ForgotPassword} /> */}
 			<Route path="/register" component={Register} />
@@ -14,7 +14,7 @@ const PublicRoutes = ({ match }) => (
 			<Redirect to="/" />
 			
 		</Switch>
-		</Container>
+		{/* </Container> */}
 	</Fragment>
 );
 
