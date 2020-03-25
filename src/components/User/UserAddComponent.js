@@ -97,7 +97,7 @@ class UserAddComponent extends Component {
                                                 value={"Patrouilleur"}>Patrouilleur
                                             </MenuItem>
                                             <MenuItem
-                                                value={"Superviseur"}>Superviseur
+                                                value={"Superviseur"}>Repartiteur
                                             </MenuItem>
                                             <MenuItem
                                                 value={"Admin"}>Admin

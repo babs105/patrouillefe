@@ -143,11 +143,14 @@ goToDashboard = () => {
                                      </Button>
                             </div>
                             )
-                            :this.state.user.role === "Superviseur"?(
+                            :this.state.user.role === "Repartiteur"?(
                                     <div>
                                         <Button color="inherit" onClick={this.goToDashboard}>
                                     <DashboardIcon/>Tableau de bord
                                 </Button>
+                                <Button color="inherit" onClick={this.goToVehecule}>
+                                     <DriveEtaIcon/> Vehicules
+                               </Button> 
                                         
                                 <Button color="inherit" onClick={this.goToEvent}>
                                      <AnnouncementIcon/> Evenements
@@ -155,11 +158,13 @@ goToDashboard = () => {
                                 <Button color="inherit" onClick={this.goToPatrouiller}>
                                     <LocalShippingIcon/>Patrouilles
                                 </Button>
-
-                                        <Button color="inherit" onClick={this.goToLogout}>
+                                <Button color="inherit" onClick={this.goToRapports}>
+                                    <DescriptionIcon/>Rapports
+                                </Button>
+                                <Button color="inherit" onClick={this.goToLogout}>
                                             <ExitToAppIcon/>
                                             Deconnexion
-                                    </Button>
+                                </Button>
                              </div>
                              ):this.state.user.role === "Patrouilleur"?(
                                 <div>

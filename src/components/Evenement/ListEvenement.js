@@ -263,7 +263,7 @@ let i=0;
   
   return (  
    
-    <Grid>
+    <div>
     <Typography variant="h4"  style={style}> Evenements</Typography>
 
     <Button variant="contained" color="primary" onClick={addEvenement}> 
@@ -362,10 +362,10 @@ let i=0;
                 {message}
                 </DialogContentText>
                 <form >
-                    <Grid container justify="center" spacing={4}>
+                    
                       {typeEvent==='ACCIDENT'?
                       (
-                        <div>
+                    <Grid container justify="center" spacing={4}>
                         <Grid item md={12} sm={12} xs={12}> 
                         <FormControl  className={classes.formControl}>
                             <InputLabel   id='action'>Action</InputLabel>
@@ -454,10 +454,10 @@ let i=0;
                         </div> 
                       ):null}
 
-                  </div> 
+                  </Grid>
                       ):typeEvent==='PANNE'?
                     (
-                      <div>
+                      <Grid container justify="center" spacing={4}>
                         <Grid item md={12} sm={12} xs={12}> 
                             <FormControl  className={classes.formControl}>
                                 <InputLabel   id='action'>Action</InputLabel>
@@ -471,7 +471,7 @@ let i=0;
                                   <MenuItem value="Baliser" key={2} name="categorie">Baliser</MenuItem> 
                             </Select>
                         </FormControl> 
-                    </Grid>
+                      </Grid>
                     <br/>
                     {action ==='Baliser'?
                     (
@@ -569,11 +569,11 @@ let i=0;
                     ):null
                   }
                     
-                    </div>
+                    </Grid>
                        ):null
                     }
-                    </Grid>
-                
+                    
+                    
                     <Grid container justify="center"style={{marginTop:'10px'}} spacing={8} alignItems="center">
                         <Grid item md={6} sm={4} xs={12}>
                           <Button variant="contained"  color="primary" fullWidth onClick={ action === 'Baliser'? baliserEvent:annulerEvent } >Valider</Button>
@@ -594,7 +594,7 @@ let i=0;
      
       <ListEventAdeBaliser/>
       
-      </Grid>
+    </div>
   );
 } 
 
