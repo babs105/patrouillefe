@@ -77,21 +77,21 @@ export default function ListForRemorquage() {
   useEffect(() => {    
           setLoader(true)
 //           // setIdPatrouille(window.localStorage.getItem('idPatrouille'));
-          // intervalID = setInterval(
-          //   () => {  
-          //     loadAllEvenementEnCoursToRemorquer();
-          //           },
-          //   10000
-          // );
+          intervalID = setInterval(
+            () => {  
+              loadAllEvenementEnCoursToRemorquer();
+                    },
+            10000
+          );
           loadAllEvenementEnCoursToRemorquer();
                  
         
 }, []); 
-// useEffect(() => {
-//   return () => {
-//     clearInterval(intervalID);
-//   }
-// }, []);
+useEffect(() => {
+  return () => {
+    clearInterval(intervalID);
+  }
+}, []);
 
 const loadAllEvenementEnCoursToRemorquer = () => {
  setLoader(true)
