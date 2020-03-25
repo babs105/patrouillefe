@@ -83,7 +83,7 @@ export default function ListCurrentEvent() {
 
   useEffect(() => {    
           setLoader(true)
-          setIdPat (window.localStorage.getItem('idUser'));
+        
           intervalID = setInterval(
             () => { 
                getUserPatrouilleurById();
@@ -103,13 +103,13 @@ export default function ListCurrentEvent() {
 useEffect(() => {
   return () => {
     clearInterval(intervalID);
-    // alert("hopp fin");
+    alert("hopp fin");
   }
 }, []);
 
 
 const getUserPatrouilleurById = () => {
-  userService.getUserById(idPat)
+  userService.getUserById(window.localStorage.getItem('idUser'))
       .then(res => {
          let idPatrouille = res.idPatrouille;
         setIdPat(idPatrouille);
