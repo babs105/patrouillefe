@@ -597,7 +597,7 @@ let i=0;
      {  intervalID = setInterval(
         () => { <ListEventAdeBaliser/>
                 },
-                100
+                10000
       )
     }
     </div>
