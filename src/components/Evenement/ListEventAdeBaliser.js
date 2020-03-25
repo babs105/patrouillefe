@@ -60,7 +60,6 @@ export default function ListEventAdeBaliser() {
   const classes = useStyles();  
   const [page, setPage] = React.useState(0);  
   const [data1, setData1] = useState([]);  
-  const [dataToDebalise, setDataToDebalise] = useState([]);  
   const [date,setDate] = useState();
   
   const [typeEvent,setTypeEvent] =  useState('');
@@ -76,14 +75,14 @@ export default function ListEventAdeBaliser() {
 
   useEffect(() => {    
           setLoader(true)
-          
           // setIdPatrouille(window.localStorage.getItem('idPatrouille'));
           intervalID = setInterval(
             () => {  
-                  
-                  loadAllEvenementAdeBaliser();
+              loadAllEvenementAdeBaliser();
+            
+              
                     },
-                    500
+                    10000
           );
           loadAllEvenementAdeBaliser();
                  
@@ -97,11 +96,11 @@ useEffect(() => {
 
 const loadAllEvenementAdeBaliser = () => {
  setLoader(true)
- 
   evenementService.getAllEvenementAdeBaliser()
   .then((res) => {
       setData1(res);
-      setLoader(false);
+      setLoader(false)
+      console.log(data1);  
   });   
 }
 
