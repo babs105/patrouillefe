@@ -86,7 +86,7 @@ export default function ListCurrentEvent() {
         
           intervalID = setInterval(
             () => { 
-               getUserPatrouilleurById();
+              // getUserPatrouilleurById();
                loadAllEvenementEnCoursNoBaliser();
               //  loadAllEvenementEnCoursToAssister();
                     },
@@ -115,7 +115,7 @@ const getUserPatrouilleurById = () => {
         setIdPat(idPatrouille);
         
       }) ;
-      clearInterval(intervalID);
+      
     };
 
 const loadAllEvenementEnCoursNoBaliser = () => {
