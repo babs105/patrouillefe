@@ -103,7 +103,6 @@ export default function ListCurrentEvent() {
 useEffect(() => {
   return () => {
     clearInterval(intervalID);
-    alert("hopp fin");
   }
 }, []);
 

@@ -43,7 +43,7 @@ const useStyles = makeStyles({
   width:200,
   },
   textField:{
-    width:300,
+    width:200,
     
   }  ,
   widthDialog:{
@@ -450,7 +450,11 @@ let i=0;
                                       value={matriculeRemorque} 
                                       onChange={onChangeMatriculeRemorque}
                                       >
+                                    <MenuItem value="DPL" key={2} name="matriculeRemorque">DPL</MenuItem>  
                                     <MenuItem value="DK 9180 BE" key={1} name="matriculeRemorque">DK 9180 BE</MenuItem>
+                                    <MenuItem value="LG 6275 C" key={2} name="matriculeRemorque"> LG 6275 C</MenuItem>  
+                                    <MenuItem value="LG 5182 C" key={2} name="matriculeRemorque"> LG 5182 C</MenuItem>  
+                                    <MenuItem value="DK 2642 BC" key={2} name="matriculeRemorque">DK 2642 BC</MenuItem>  
                                     <MenuItem value="LG 6617 C" key={2} name="matriculeRemorque">LG 6617 C</MenuItem>  
                               </Select>
                             </FormControl>
