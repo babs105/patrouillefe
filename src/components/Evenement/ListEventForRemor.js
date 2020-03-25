@@ -754,24 +754,54 @@ let i=0;
                   
                       ):(action ==='annuler'
                                  ?(
-                                  <div>
-                                  <Grid item md={12} sm={12} xs={12}> 
-                              <FormControl  className={classes.formControl}>
-                                  <InputLabel   id='motif'> Motif </InputLabel>
-                                  <Select  
-                                      name='motif'
-                                      id='motif'  
-                                      value={motif} 
-                                      onChange={onChangeMotif}
-                                      >
-                                    <MenuItem value="Reparti Seul"key={1} name="motif">Reparti Seul</MenuItem>
-                                    <MenuItem value="Remorquage Annuler"key={2} name="motif">Remorquage Annulé</MenuItem>  
-                                    <MenuItem value="Non Localiser"key={2} name="motif">Non Localiser</MenuItem>
-                                 
-                              </Select>
-                          </FormControl> 
-                      </Grid>
-        
+                          <div>
+                                    <Grid item md={12} sm={12} xs={12}> 
+                                            <FormControl  className={classes.formControl}>
+                                                <InputLabel   id='motif'> Motif </InputLabel>
+                                                <Select  
+                                                    name='motif'
+                                                    id='motif'  
+                                                    value={motif} 
+                                                    onChange={onChangeMotif}
+                                                    >
+                                                  <MenuItem value="Reparti Seul"key={1} name="motif">Reparti Seul</MenuItem>
+                                                  <MenuItem value="Remorquage Annuler"key={2} name="motif">Remorquage Annulé</MenuItem>  
+                                                  <MenuItem value="Non Localiser"key={2} name="motif">Non Localiser</MenuItem>
+                                              
+                                            </Select>
+                                        </FormControl> 
+                                    </Grid>
+                              <Grid item md={12} sm={12} xs={12}>
+                                <TextField
+                                        id="dateRemork"
+                                        variant="outlined"
+                                        label="Date Remorquage"
+                                        name="date"
+                                        type="date"
+                                        value={date}
+                                        onChange={onChangeDate}
+                                        className={classes.textField}
+                                        InputLabelProps={{
+                                        shrink: true,
+                                        }}
+                                    />      
+                             </Grid>
+                     <br/>
+                             <Grid item md={12}  sm={12} xs={12}>
+                                  <TextField
+                                      id="heureDarriveRemorque"
+                                      variant="outlined"
+                                      label="Heure d'arrivée"
+                                      name="heureDarriveRemorque"
+                                      type="time"
+                                      value={heureDarriveRemorque}
+                                      onChange={onChangeHeureDarriveRemorque}
+                                      className={classes.textField}
+                                      InputLabelProps={{
+                                      shrink: true,
+                                      }}
+                                  /> 
+                            </Grid>
                               </div>
                             
                            ):null 
