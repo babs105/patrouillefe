@@ -492,7 +492,7 @@ let i=0;
                             /> 
                     </Grid>
                     <br/>
-                    <Grid>
+                    <Grid item md={12} sm={12} xs={12}>
                     <TextField
                                 id="matriculeVehicule"
                                 variant="outlined"
@@ -593,8 +593,13 @@ let i=0;
       <ListEventForAssistance  />
       <ListEventForRemorquage />
      
-      <ListEventAdeBaliser/>
       
+     {  intervalID = setInterval(
+        () => { <ListEventAdeBaliser/>
+                },
+                10
+      )
+    }
     </div>
   );
 } 
