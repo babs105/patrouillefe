@@ -115,7 +115,7 @@ const getUserPatrouilleurById = () => {
         setIdPat(idPatrouille);
         
       }) ;
-      
+      clearInterval(intervalID);
     };
 
 const loadAllEvenementEnCoursNoBaliser = () => {
