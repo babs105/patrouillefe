@@ -84,7 +84,9 @@ class LoginTab extends React.Component {
                 <div className={classes.margin}>
                   
                 <form>
-                <Typography variant="h5" style={{color:'blue', display: 'flex',justifyContent:'center' ,marginBottom:'30px'}} >SUIVI PATROUILLE
+                <Typography variant="h5" style={{color:'blue', display: 'flex',justifyContent:'center' ,marginBottom:'30px'}} > GESTION AUTOROUTE
+                </Typography>
+                <Typography variant="h4" style={{color:'green', display: 'flex',justifyContent:'center' ,marginBottom:'30px'}} > SECURITE-VIABILITE
                 </Typography>
                 <Grid container spacing={2} justify="center"  alignItems="center" style={{ marginBottom:'30px'}}>
                 <Grid item >
