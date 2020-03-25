@@ -83,7 +83,7 @@ export default function ListEventAdeBaliser() {
                   
                   loadAllEvenementAdeBaliser();
                     },
-                    10000
+                    500
           );
           loadAllEvenementAdeBaliser();
                  
@@ -101,9 +101,7 @@ const loadAllEvenementAdeBaliser = () => {
   evenementService.getAllEvenementAdeBaliser()
   .then((res) => {
       setData1(res);
-      setDataToDebalise(res)
-      setLoader(false)
-      console.log(data1);  
+      setLoader(false);
   });   
 }
 
