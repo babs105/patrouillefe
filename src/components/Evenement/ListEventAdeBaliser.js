@@ -76,11 +76,11 @@ export default function ListEventAdeBaliser() {
 
   useEffect(() => {    
           setLoader(true)
-          setData1(dataToDebalise);
+          
           // setIdPatrouille(window.localStorage.getItem('idPatrouille'));
           intervalID = setInterval(
             () => {  
-                  
+                  setData1(dataToDebalise);
                   loadAllEvenementAdeBaliser();
                     },
                     10000
