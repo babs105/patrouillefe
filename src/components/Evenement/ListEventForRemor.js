@@ -22,10 +22,7 @@ import TableRow from '@material-ui/core/TableRow';
 import {evenementService} from '../../service/evenementService';
 import { history } from '../../routage/ExtBrowserRouter';
 import { useState, useEffect } from 'react';
-
 import {Select,MenuItem,InputLabel,FormControl} from '@material-ui/core';
-
-// import {ExportXlsx} from './ExportXlsx';
 import Loader from '../loader/Loader';
   
 const useStyles = makeStyles({  
@@ -79,14 +76,13 @@ export default function ListForRemorquage() {
 //           // setIdPatrouille(window.localStorage.getItem('idPatrouille'));
           intervalID = setInterval(
             () => {  
-              loadAllEvenementEnCoursToRemorquer();
-                    },
-            10000
-          );
+                     loadAllEvenementEnCoursToRemorquer();
+                    },10000);
           loadAllEvenementEnCoursToRemorquer();
                  
         
 }, []); 
+
 useEffect(() => {
   return () => {
     clearInterval(intervalID);
@@ -94,12 +90,12 @@ useEffect(() => {
 }, []);
 
 const loadAllEvenementEnCoursToRemorquer = () => {
- setLoader(true)
+ setLoader(true);
   evenementService.getAllEvenementEnCoursToRemorquer()
   .then((res) => {
       setData1(res);
-      setLoader(false)
-      console.log(data1);  
+      setLoader(false);
+      
   });   
 }
 
