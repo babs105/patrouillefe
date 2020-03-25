@@ -288,7 +288,7 @@ let i=0;
   //    </Grid>  */}
   
   
-    <Paper  style={{marginTop:'20px'}}className={classes.root}>  
+    <Paper  style={{marginTop:'20px'}} className={classes.root}>  
     <Typography variant="h5"  style={style}>Evenements en cours</Typography>
       <TableContainer className={classes.container}>  
         <Table stickyHeader aria-label="sticky table">  
@@ -307,14 +307,14 @@ let i=0;
           {loader ?(
        <Grid container alignItems="center" justify="center" >
                
-    <Grid item >
-      <Paper className={classes.paper } >
-       {/* <div className={classes.margin}>
-       <Loader/>
-       </div> */}
-    </Paper>
-    </Grid>
-   </Grid>)
+          <Grid item md={12}>
+            <Paper className={classes.paper } >
+            <div className={classes.margin}>
+              <Loader/>
+            </div> 
+           </Paper>
+          </Grid>
+     </Grid>)
    :(
             data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => {  
               return (  
