@@ -100,12 +100,12 @@ export default function ListCurrentEvent() {
 },[]); 
 
 
-// useEffect(() => {
-//   return () => {
-//     clearInterval(intervalID);
-//     alert("hopp fin");
-//   }
-// }, []);
+useEffect(() => {
+  return () => {
+    clearInterval(intervalID);
+    // alert("hopp fin");
+  }
+}, []);
 
 
 const getUserPatrouilleurById = () => {
