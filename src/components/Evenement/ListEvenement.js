@@ -383,7 +383,7 @@ let i=0;
                    <br/>
                         {action ==='Baliser'?
                         (
-                          <div>
+                          <Grid container justify="center" spacing={4}>
                          <Grid item md={12}  sm={12} xs={12}>
                             <TextField
                                     id="heureBalisage"
@@ -451,7 +451,7 @@ let i=0;
                       </Select>
                   </FormControl> 
               </Grid>
-                        </div> 
+                        </Grid> 
                       ):null}
 
                   </Grid>
@@ -475,7 +475,7 @@ let i=0;
                     <br/>
                     {action ==='Baliser'?
                     (
-                      <div>
+                      <Grid container justify="center" spacing={4}>
                      <Grid item md={12}  sm={12} xs={12}>
                         <TextField
                                 id="heureBalisage"
@@ -542,13 +542,13 @@ let i=0;
                       </Select>
                   </FormControl> 
               </Grid>
-                      </div>
+                      </Grid>
 
                     ):action ==='Annuler'?
                     (
-                      <div>
+                      <Grid container justify="center" spacing={4}>
                           <Grid item md={12} sm={12} xs={12}> 
-                      <FormControl  className={classes.formControl}>
+                          <FormControl  className={classes.formControl}>
                           <InputLabel   id='motif'> Motif </InputLabel>
                           <Select  
                               name='motif'
@@ -564,8 +564,9 @@ let i=0;
                       </Select>
                   </FormControl> 
               </Grid>
+              </Grid>
 
-                      </div>
+              
                     ):null
                   }
                     
