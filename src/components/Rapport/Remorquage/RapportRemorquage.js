@@ -124,7 +124,7 @@ let i=0;
         <Table stickyHeader aria-label="sticky table">  
         <TableHead>  
         <TableRow>
-        <TableCell align="center">N°: </TableCell>
+        <TableCell align="center" style={{fontFamily:'bold'}}>N°: </TableCell>
             <TableCell align="center">DATE  </TableCell>
             <TableCell align="center">OBJET ENLEVEMENT </TableCell>
             <TableCell align="center">MATRICULE  </TableCell>
