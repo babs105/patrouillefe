@@ -76,9 +76,11 @@ export default function ListEventAdeBaliser() {
 
   useEffect(() => {    
           setLoader(true)
+          setData1(dataToDebalise);
           // setIdPatrouille(window.localStorage.getItem('idPatrouille'));
           intervalID = setInterval(
             () => {  
+                  
                   loadAllEvenementAdeBaliser();
                     },
                     10000
@@ -95,7 +97,7 @@ useEffect(() => {
 
 const loadAllEvenementAdeBaliser = () => {
  setLoader(true)
- setData1(dataToDebalise);
+ 
   evenementService.getAllEvenementAdeBaliser()
   .then((res) => {
       setData1(res);
