@@ -592,14 +592,8 @@ let i=0;
 
       <ListEventForAssistance  />
       <ListEventForRemorquage />
+      <ListEventAdeBaliser/>
      
-      
-     {  intervalID = setInterval(
-        () => { <ListEventAdeBaliser/>
-                },
-                10000
-      )
-    }
     </div>
   );
 } 

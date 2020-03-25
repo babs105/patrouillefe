@@ -78,22 +78,22 @@ export default function ListEventAdeBaliser() {
           setLoader(true)
           
           // setIdPatrouille(window.localStorage.getItem('idPatrouille'));
-          // intervalID = setInterval(
-          //   () => {  
-          //         setData1(dataToDebalise);
-          //         loadAllEvenementAdeBaliser();
-          //           },
-          //           10000
-          // );
+          intervalID = setInterval(
+            () => {  
+                  
+                  loadAllEvenementAdeBaliser();
+                    },
+                    10000
+          );
           loadAllEvenementAdeBaliser();
                  
         
 }, []); 
-// useEffect(() => {
-//   return () => {
-//     clearInterval(intervalID);
-//   }
-// }, []);
+useEffect(() => {
+  return () => {
+    clearInterval(intervalID);
+  }
+}, []);
 
 const loadAllEvenementAdeBaliser = () => {
  setLoader(true)
