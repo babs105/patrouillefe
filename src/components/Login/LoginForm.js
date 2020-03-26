@@ -54,7 +54,22 @@ class LoginTab extends React.Component {
                 setCookie('PATROUILLE_COOKIE',res.sessionCookie);
                 this.setState({message : 'logging successfully.'});
                 this.setState({loader:false});
-                this.props.history.push('/app');
+                if(res.user.role ==='Patrouilleur'){
+                    this.props.history.push('/app/patrouiller');
+                }
+                if(res.user.role === 'Repartiteur'){
+                    this.props.history.push('/app/evenement');
+                }
+                if(res.user.role === 'Remorqueur'){
+                    this.props.history.push('/app/evenement');
+                }
+                if(res.user.role === 'Admin'){
+                    this.props.history.push('/app');
+                }
+                // if(res.user.role === 'Remorqueur'){
+                //     this.props.history.push('/app/');
+                // }
+                // this.props.history.push('/app');
             });
     }
     onChange = (e) => this.setState({ [e.target.name]: e.target.value });

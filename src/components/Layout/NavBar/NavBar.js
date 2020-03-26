@@ -182,7 +182,21 @@ goToDashboard = () => {
                                             Deconnexion
                              </Button>
                          </div>
-                         ):null
+                         ):this.state.user.role === "Remorqueur"?(
+                            <div>
+                                  <Button color="inherit" onClick={this.goToDashboard}>
+                                <DashboardIcon/>Tableau de bord
+                            </Button>
+                            <Button color="inherit" onClick={this.goToEvent}>
+                                 <AnnouncementIcon/> Evenements
+                           </Button>
+                                    <Button color="inherit" onClick={this.goToLogout}>
+                                        <ExitToAppIcon/>
+                                        Deconnexion
+                         </Button>
+                     </div>
+                     ):
+                         null
                         }
                      
                 </Toolbar>
