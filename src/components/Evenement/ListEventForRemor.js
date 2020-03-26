@@ -214,6 +214,9 @@ const annulerRemorquage = () =>{
   let data = {
     idEvent:idEvent,
     action:action,
+    dateRemorquage:date,
+    heureDarriveRemorque:heureDarriveRemorque,
+    matriculeRemorque:matriculeRemorque,
     idUser:window.localStorage.getItem('idUser'),
     motif:motif
   }
@@ -659,7 +662,11 @@ let i=0;
                                       value={matriculeRemorque} 
                                       onChange={onChangeMatriculeRemorque}
                                       >
+                                    <MenuItem value="DPL" key={2} name="matriculeRemorque">DPL</MenuItem>  
                                     <MenuItem value="DK 9180 BE" key={1} name="matriculeRemorque">DK 9180 BE</MenuItem>
+                                    <MenuItem value="LG 6275 C" key={2} name="matriculeRemorque"> LG 6275 C</MenuItem>  
+                                    <MenuItem value="LG 5182 C" key={2} name="matriculeRemorque"> LG 5182 C</MenuItem>  
+                                    <MenuItem value="DK 2642 BC" key={2} name="matriculeRemorque">DK 2642 BC</MenuItem>  
                                     <MenuItem value="LG 6617 C" key={2} name="matriculeRemorque">LG 6617 C</MenuItem>  
                               </Select>
                             </FormControl>
@@ -765,11 +772,12 @@ let i=0;
                                             </Select>
                                         </FormControl> 
                                     </Grid>
+                                    <br/>
                               <Grid item md={12} sm={12} xs={12}>
                                 <TextField
                                         id="dateRemork"
                                         variant="outlined"
-                                        label="Date Remorquage"
+                                        label="Date"
                                         name="date"
                                         type="date"
                                         value={date}
@@ -796,6 +804,26 @@ let i=0;
                                       }}
                                   /> 
                             </Grid>
+                            <br/>
+                            <Grid item md={12} sm={12} xs={12}> 
+                              <FormControl  className={classes.formControl}>
+                                  <InputLabel   id='matriculeRemorque'>Matricule Remorque</InputLabel>
+                                  <Select  
+                                      name='matriculeRemorque'
+                                      id='matriculeRemorque'  
+                                      value={matriculeRemorque} 
+                                      onChange={onChangeMatriculeRemorque}
+                                      >
+                                    <MenuItem value="DPL" key={2} name="matriculeRemorque">DPL</MenuItem>  
+                                    <MenuItem value="DK 9180 BE" key={1} name="matriculeRemorque">DK 9180 BE</MenuItem>
+                                    <MenuItem value="LG 6275 C" key={2} name="matriculeRemorque"> LG 6275 C</MenuItem>  
+                                    <MenuItem value="LG 5182 C" key={2} name="matriculeRemorque"> LG 5182 C</MenuItem>  
+                                    <MenuItem value="DK 2642 BC" key={2} name="matriculeRemorque">DK 2642 BC</MenuItem>  
+                                    <MenuItem value="LG 6617 C" key={2} name="matriculeRemorque">LG 6617 C</MenuItem>  
+                              </Select>
+                            </FormControl>
+                          </Grid>
+                          <br/>
                               </div>
                             
                                   ):null 
