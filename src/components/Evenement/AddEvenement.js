@@ -47,6 +47,7 @@ class AddEvent extends React.Component {
             position:'',
             secteur:'',
             sens:'',
+            typeBalisage:'',
             pointKilometrique:'',
             alertOpen:false,
             message: null,
@@ -292,46 +293,90 @@ class AddEvent extends React.Component {
                         :null
                   }
 
-{this.state.autoroute ==='A1'?(
-                        <Grid item md={12} sm={12} xs={12}> 
-                            <FormControl  className={classes.formControl}>
-                                <InputLabel   id='secteur'>Secteur </InputLabel>
-                                <Select  
-                                    name='secteur'
-                                    id='secteur'  
-                                    value={this.state.secteur} 
-                                    onChange={this.onChange}
-                                    >
-                   
-                           <MenuItem value="AIBD-NGUEKHOKH"key={1} name="secteur">AIBD-NGUEKHOKH</MenuItem>
-                          <MenuItem value="NGUEKHOKH-MBOUR"key={2} name="secteur">NGUEKHOKH-MBOUR</MenuItem>   
-                            
-                            
-                            </Select>
-                        </FormControl> 
-                    </Grid> 
-      ):this.state.autoroute ==='A2'?(
+
+{
+(this.state.typeEvenement ==='BALAYAGE MECANIQUE' || this.state.typeEvenement ==='BALAYAGE MANUEL')?(
+    <Grid item md={12} sm={12} xs={12}> 
+    <FormControl  className={classes.formControl}>
+        <InputLabel   id='typeBalisage'>Type Balisage </InputLabel>
+        <Select  
+            name='typeBalisage'
+            id='typeBalisage'  
+            value={this.state.typeBalisage} 
+            onChange={this.onChange}
+            >
+             <MenuItem value="Mobile" key={3} name="typeBalisage">Mobile</MenuItem>
+             <MenuItem value="Fixe" key={4} name="typeBalisage">Fixe</MenuItem>  
+
+    
+    
+    </Select>
+</FormControl> 
+</Grid> 
+):null
+}             
+{
+(this.state.typeEvenement ==='BALAYAGE MECANIQUE' || this.state.typeEvenement ==='BALAYAGE MANUEL')?(
+    (this.state.autoroute ==='A1' ||this.state.autoroute ==='A2')?(
         <Grid item md={12} sm={12} xs={12}> 
-           <FormControl  className={classes.formControl}>
-               <InputLabel   id='secteurid'>Secteur </InputLabel>
-               <Select  
-                   name='secteur'
-                   id='secteurid'  
-                   value={this.state.secteur} 
-                   onChange={this.onChange}
-                   >
-                    <MenuItem value="AIBD-BAMBEY" key={3} name="secteur">AIBD-BAMBEY</MenuItem>
-                    <MenuItem value="BAMBEY-TOUBA" key={4} name="secteur">BAMBEY-TOUBA</MenuItem>  
-      
-           
-           
-           </Select>
-       </FormControl> 
-   </Grid> 
-      ):null
-}
-                     
-                   
+            <FormControl  className={classes.formControl}>
+                <InputLabel   id='secteur'>Secteur </InputLabel>
+                <Select  
+                    name='secteur'
+                    id='secteur'  
+                    value={this.state.secteur} 
+                    onChange={this.onChange}
+                    >
+   
+           <MenuItem value="AMT"key={1} name="secteur">AMT</MenuItem>
+          <MenuItem value="ILA TOUBA"key={2} name="secteur">ILA TOUBA</MenuItem>   
+            
+            
+            </Select>
+        </FormControl> 
+    </Grid> 
+
+):null)
+:(this.state.autoroute ==='A1'?(
+    <Grid item md={12} sm={12} xs={12}> 
+        <FormControl  className={classes.formControl}>
+            <InputLabel   id='secteur'>Secteur </InputLabel>
+            <Select  
+                name='secteur'
+                id='secteur'  
+                value={this.state.secteur} 
+                onChange={this.onChange}
+                >
+
+       <MenuItem value="AIBD-NGUEKHOKH"key={1} name="secteur">AIBD-NGUEKHOKH</MenuItem>
+      <MenuItem value="NGUEKHOKH-MBOUR"key={2} name="secteur">NGUEKHOKH-MBOUR</MenuItem>   
+        
+        
+        </Select>
+    </FormControl> 
+</Grid> 
+):this.state.autoroute ==='A2'?(
+<Grid item md={12} sm={12} xs={12}> 
+<FormControl  className={classes.formControl}>
+<InputLabel   id='secteurid'>Secteur </InputLabel>
+<Select  
+name='secteur'
+id='secteurid'  
+value={this.state.secteur} 
+onChange={this.onChange}
+>
+<MenuItem value="AIBD-BAMBEY" key={3} name="secteur">AIBD-BAMBEY</MenuItem>
+<MenuItem value="BAMBEY-TOUBA" key={4} name="secteur">BAMBEY-TOUBA</MenuItem>  
+
+
+
+</Select>
+</FormControl> 
+</Grid> 
+):null
+)
+
+}                   
 
                         <Grid item md={12} sm={12} xs={12}> 
                          {/* <TextField id="cuvename" variant="outlined" label="Imma" type="text" name="cuveName" value={this.state.cuveName} onChange={this.onChange} fullWidth  autoFocus disabled required /> */}

@@ -10,6 +10,7 @@ export const evenementService = {
   getAllEvenementEnCoursToRemorquer,
   getAllEvenementAdeBaliser,
   getAllEvenementTerminer,
+  getEventById,
   openEvent,
   closeEvent,
   baliserEvent,
@@ -130,28 +131,11 @@ function getPatrouilleById(id){
     return axios.get('/evenement/getPatrouilleById/' + id).then(handleRegisterResponse)
       .then(ravitaillement => ravitaillement);
   }
-// function getAllOperationsCuveInPreviousMonth() {
-//     return axios.get('/operationsCuve/getAllOperationsCuveInInPreviousMonth').then(handleRegisterResponse)
-//       .then(operations => operations);
-//   }
-//   function getAllOperationsCuveInCurrentMonth() {
-//     return axios.get('/operationsCuve/getAllOperationsCuveInCurrentMonth').then(handleRegisterResponse)
-//       .then(operations => operations);
-//   }
- 
-  // function searchRavitaillementByImmatricule(critere){
-  //   return axios.get('/operationsCuve/searchRavitaillementByImmatricule/' + critere).then(handleRegisterResponse)
-  //     .then(ravitaillement => ravitaillement);
-  // }
-  // function getCuveByCuveName(cuveName) {
-  //   return axios.get('/cuve/getCuveByCuveName/'+ cuveName).then(handleRegisterResponse)
-  //     .then(cuve => cuve);
-  // }
-  // function deleteCuveByCuveName(cuveName) {
-  //   return axios.delete('/cuve/deleteCuveByCuveName/'+ cuveName).then(handleRegisterResponse)
-  //     .then(cuve => cuve);
-  // }
-
+  function getEventById(id){
+    return axios.get('/evenement/getEvenementById/' + id).then(handleRegisterResponse)
+      .then(evenement => evenement);
+  }
+  
 function handleRegisterResponse(response) {
   const { data } = response;
   if (response.status === 401) {

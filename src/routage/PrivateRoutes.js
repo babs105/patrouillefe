@@ -24,6 +24,7 @@ import AddPatrouiller from '../components/Patrouiller/AddPatrouiller' ;
 
 import ListEvent from '../components/Evenement/ListEvenement';
 import AddEvent from '../components/Evenement/AddEvenement';
+import ShowEvent from '../components/Evenement/ShowEvenement'
 
 
 
@@ -53,6 +54,7 @@ const PrivateRoutes = ({ match}) => (
 
 			<Route path="/app/evenement" exact component={ListEvent} />
             <Route path="/app/add-event" exact component={AddEvent} />
+			<Route path="/app/show-event" exact component={ShowEvent} />
 
 
 			<Route path="/app/vehicule" exact component={VehiculeList} />

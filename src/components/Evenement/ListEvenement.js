@@ -72,6 +72,10 @@ export default function ListCurrentEvent() {
   const [matriculeVehicule,setMatriculeVehicule] = useState('');
   const [categorie,setCategorie] = useState('');
   const [action,setAction] = useState('');
+  const [sens,setSens] = useState('');
+  const [heureFinEvent,setHeureFinEvent] = useState('');
+  const [autoroute,setAutoroute] = useState('');
+  const [distance,setDistance] = useState('');
   const [operation,setOperation] = useState('');
   const [idEvent,setIdEvent] = useState('');
   const [motif,setMotif] = useState('');
@@ -164,12 +168,25 @@ const handleClose = () => {
   const onChangeCategorie = event => {  
     setCategorie(event.target.value);  
   };
+  const onChangeDistance = event => {  
+    setDistance(event.target.value);  
+  };
+  const onChangeSens = event => {  
+    setSens(event.target.value);  
+  };
+  const onChangeAutoroute = event => {  
+    setAutoroute(event.target.value);  
+  };
   const onChangeMatriculeVehicule = event => {  
     setMatriculeVehicule(event.target.value);  
   };
   const onChangeAction = event => {  
     setAction(event.target.value);  
   };
+  const onChangeHeureFinEvent = event => {  
+    setHeureFinEvent(event.target.value);  
+  };
+
 
   const onChangeOperation = event => {  
     setOperation(event.target.value);  
@@ -571,9 +588,98 @@ let i=0;
                   }
                     
                     </Grid>
-                       ):null
-                    }
+                       ):typeEvent ==='BALAYAGE MECANIQUE'?(
+                  <Grid>
+                        <Grid item md={12} sm={12} xs={12}> 
+                              <FormControl  className={classes.formControl}>
+                                  <InputLabel   id='action'>Action  à faire </InputLabel>
+                                  <Select  
+                                      name='action'
+                                      id='action'  
+                                      value={action} 
+                                      onChange={onChangeAction}
+                                      >
+                                    <MenuItem value="fermer" key={1} name="action">Fermer</MenuItem>
+                                  
+                                </Select>
+                            </FormControl> 
+                        </Grid>
+                        <br/>
+                      {action === 'fermer' ?
+                        (
+                          <Grid container justify="center" spacing={4}>
+                          <Grid item md={12}  sm={12} xs={12}>
+                            <TextField
+                                    id="heureFinEvent"
+                                    variant="outlined"
+                                    label="Heure Fin "
+                                    name="heureFinEvent"
+                                    type="time"
+                                    value={heureFinEvent}
+                                    onChange={onChangeHeureFinEvent}
+                                    className={classes.textField}
+                                    InputLabelProps={{
+                                    shrink: true,
+                                    }}
+                                /> 
+                        </Grid>
+                        <Grid item md={12} sm={12} xs={12}>
+                    <FormControl  className={classes.formControl}>
+                                <InputLabel   id='autoroute'>Autoroute </InputLabel>
+                                <Select  
+                                    name='autoroute'
+                                    id='autoroute'  
+                                    value={autoroute} 
+                                    onChange={onChangeAutoroute}
+                                    >
+                                    <MenuItem value="A1"key={1} name="autoroute">A1</MenuItem>
+                                    <MenuItem value="A2"key={2} name="autoroute">A2</MenuItem>  
+                                    {/* <MenuItem value="SINDIA-MBOUR"key={3} name="typeEvenement">SINDIA-MBOUR</MenuItem>
+                                     <MenuItem value="BAMBEY-DIOURBEL-TOUBA"key={4} name="typeEvenement">BAMBEY-DIOURBEL-TOUBA</MenuItem>    */}
+                            </Select>
+                        </FormControl> 
+                        </Grid>
+                        <br/>
+                        <Grid item md={12} sm={12} xs={12}>
+
+                       <TextField
+                                id="distance"
+                                variant="outlined"
+                                label="Distance"
+                                name="distance"
+                                // type="number"
+                                value={distance}
+                                onChange={onChangeDistance}
+                                className={classes.textField}
+                            
+                            />
+                             
+                            </Grid>
+                            <Grid item md={12} sm={12} xs={12}>
+                    <FormControl  className={classes.formControl}>
+                                <InputLabel   id='sens'>Sens </InputLabel>
+                                <Select  
+                                    name='sens'
+                                    id='sens'  
+                                    value={sens} 
+                                    onChange={onChangeSens}
+                                    >
+                                    <MenuItem value="SENS-1"key={1} name="sens">SENS-1</MenuItem>
+                                    <MenuItem value="SENS-2"key={2} name="sens">SENS-2</MenuItem>  
+                                    {/* <MenuItem value="SINDIA-MBOUR"key={3} name="typeEvenement">SINDIA-MBOUR</MenuItem>
+                                     <MenuItem value="BAMBEY-DIOURBEL-TOUBA"key={4} name="typeEvenement">BAMBEY-DIOURBEL-TOUBA</MenuItem>    */}
+                            </Select>
+                        </FormControl> 
+                   </Grid>
+                     </Grid>
+                
                     
+                       ):null}
+
+                  </Grid> 
+                      ):null
+                    }
+                
                     
                     <Grid container justify="center"style={{marginTop:'10px'}} spacing={8} alignItems="center">
                         <Grid item md={6} sm={4} xs={12}>
