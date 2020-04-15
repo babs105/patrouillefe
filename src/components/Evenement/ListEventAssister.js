@@ -74,6 +74,7 @@ export default function ListEventAssiter() {
   const [heureDepSap,setHeureDepSap] = useState('');
   const [heureDepGen,setHeureDepGen] = useState('');
   
+  
   const [heureDeBalisage,setHeureDeBalisage] = useState('');
   const [loader,setLoader] = useState(false)
   const [alertOpen,setAlertOpen]= useState(false);
@@ -120,6 +121,19 @@ const loadAllEvenementEnCoursToAssister = () => {
     setTypeEvent(typeEvent);
     setAlertOpen(true);
     setMessage('');
+    setHeureDeBalisage('');
+    setHeureDepGen('')
+    setHeureDepSap('')
+    setAction('')
+    setHeureArriveSap('')
+    setHeureArriveGen('')
+    setHeureDepSap('')
+    setHeureDepGen('')
+    setNbrVoieImplique('')
+    setNbBlesse('')
+    setNbVehiculeAccidente('')
+    
+
     };  
 
 const handleClose = () => {

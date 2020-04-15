@@ -106,6 +106,14 @@ const loadAllEvenementEnCoursToRemorquer = () => {
     setTypeEvent(typeEvent);
     setAlertOpen(true);
     setMessage('');
+    setGareDepot('')
+    setHeureRemorquage('')
+    setMotif('')
+    setMatriculeRemorque('')
+    setAction('')
+    setHeureDarriveRemorque('')
+    setHeureDepSap('')
+    setHeureDepGen('')
     };  
 
 const handleClose = () => {

@@ -690,7 +690,7 @@ let i=0;
                 </form>
                 <Typography variant="h6"style={{ color:'green'}}>
                 {message}
-      </Typography>
+             </Typography>
             
                 </DialogContent>
                 <DialogActions>
