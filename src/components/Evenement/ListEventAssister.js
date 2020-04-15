@@ -401,7 +401,7 @@ let i=0;
                 <DialogTitle id="alert-dialog-title">{"SUIVI EVENEMENT"}</DialogTitle>
                 <DialogContent className={classes.widthDialog}>
                 <DialogContentText id="alert-dialog-description">
-                {message}
+                {/* {message} */}
                 </DialogContentText>
                 <form >
                     <Grid container justify="center" alignItems="center" spacing={2}>
@@ -602,6 +602,9 @@ let i=0;
                        </Grid>
                     </Grid>
                 </form>
+                <Typography variant="h6"style={{ color:'green'}}>
+                {message}
+      </Typography>
                 </DialogContent>
                 <Grid style={{marginTop:'5px'}}>
                 <DialogActions>

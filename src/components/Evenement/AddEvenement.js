@@ -95,6 +95,7 @@ class AddEvent extends React.Component {
                 heureOuvertureEvement:this.state.heureOuvertureEvement,
                 typeEvenement:this.state.typeEvenement,
                 categorieV : this.state.categorieV,
+                typeBalisage:this.state.typeBalisage,
                 secteur: this.state.secteur,
                 position:this.state.position,
                 pointKilometrique :this.state.autoroute+" "+this.state.distance+" "+this.state.sens,

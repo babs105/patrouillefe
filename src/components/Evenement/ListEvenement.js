@@ -376,7 +376,7 @@ let i=0;
                 <DialogTitle id="alert-dialog-title">{"SUIVI EVENEMENT"}</DialogTitle>
                 <DialogContent  className={classes.widthDialog}>
                 <DialogContentText id="alert-dialog-description">
-                {message}
+                {/* {message} */}
                 </DialogContentText>
                 <form >
                     
@@ -688,6 +688,10 @@ let i=0;
                     </Grid>
                   
                 </form>
+                <Typography variant="h6"style={{ color:'green'}}>
+                {message}
+      </Typography>
+            
                 </DialogContent>
                 <DialogActions>
                 <Button onClick={handleClose} color="primary" autoFocus>
