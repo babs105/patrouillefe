@@ -217,7 +217,7 @@ class AddPatrouiller extends React.Component {
                         <MenuItem value="AIBD-BAMBEY" key={1} name="itineraire">AIBD-BAMBEY</MenuItem>
                         <MenuItem value="BAMBEY-TOUBA" key={2} name="itineraire">BAMBEY-TOUBA</MenuItem>  
                         <MenuItem value="AIBD-NGUEKHOKH" key={3} name="itineraire">AIBD-NGUEKHOKH</MenuItem>
-                        <MenuItem value="BAMBEY-TOUBA" key={4} name="itineraire">BAMBEY-TOUBA</MenuItem>   
+                        <MenuItem value="NGUEKHOKH-MBOUR" key={4} name="itineraire">NGUEKHOKH-MBOUR</MenuItem>   
                             
                             }
                             </Select>

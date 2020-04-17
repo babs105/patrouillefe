@@ -110,6 +110,10 @@ const loadAllEvenementAdeBaliser = () => {
       setTypeEvent(typeEvent);
       setAlertOpen(true);
       setMessage('');
+      setHeureDeBalisage('');
+      setHeureDepGen('')
+      setHeureDepSap('')
+      setAction('')
       };   
 
 const handleClose = () => {
@@ -132,6 +136,7 @@ const handleClose = () => {
 
   const onChangeAction = event => {  
     setAction(event.target.value);  
+    setMessage('');
   };
   const onChangeHeureDepGen = event => {  
     setHeureDepGen(event.target.value);  

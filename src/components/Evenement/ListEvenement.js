@@ -486,6 +486,7 @@ let i=0;
                                     >
                                   <MenuItem value="Annuler" key={1} name="categorie">Annuler</MenuItem>
                                   <MenuItem value="Baliser" key={2} name="categorie">Baliser</MenuItem> 
+                                  {/* <MenuItem value="Remorquer " key={3} name="categorie">Remorquer</MenuItem>  */}
                             </Select>
                         </FormControl> 
                       </Grid>
