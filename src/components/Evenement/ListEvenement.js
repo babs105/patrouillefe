@@ -149,6 +149,10 @@ const handleOpen = (idEvent,typeEvent) => {
   setTypeEvent(typeEvent);
   setAlertOpen(true);
   setMessage('');
+  setHeureBalisage('');
+  setMatriculeVehicule('');
+  setCategorie('');
+  setOperation('');
   }; 
  
 const handleClose = () => {
