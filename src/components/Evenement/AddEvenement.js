@@ -103,10 +103,10 @@ class AddEvent extends React.Component {
         evenementService.openEvent(event)
             .then(res => {
                 if(res.error){
-                this.setState({message : 'Erreur ouverture Evenement'});
+                this.setState({message : 'Erreur Annonce Evenement'});
                 this.setState({alertOpen : true});
             }else {
-                    this.setState({message : 'Ouverture evenement avec succes'});
+                    this.setState({message : 'Evenement annoncé avec succes'});
                     this.setState({alertOpen : true});
             }
                 // 
@@ -149,7 +149,7 @@ class AddEvent extends React.Component {
             <Paper className={classes.paper }>
                 <div className={classes.margin}>
                 <form >
-                <Typography variant="h4" style={{ display: 'flex',justifyContent:'center' ,marginBottom:'30px'}} >Ouverture Evenement</Typography>
+                <Typography variant="h4" style={{ display: 'flex',justifyContent:'center' ,marginBottom:'30px'}} >Annocer Evenement</Typography>
                     <Grid container spacing={4} alignItems="center">
                     <Grid item md={12} sm={12} xs={12}>
                         <TextField
@@ -406,7 +406,10 @@ onChange={this.onChange}
                 <DialogTitle id="alert-dialog-title">{"INFORMATION"}</DialogTitle>
                 <DialogContent>
                 <DialogContentText id="alert-dialog-description">
+                <Typography variant="h6"style={{ color:'green'}}>
                 {this.state.message}
+                </Typography>
+              
                 </DialogContentText>
                 </DialogContent>
                 <DialogActions>

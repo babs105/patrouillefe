@@ -347,11 +347,12 @@ let i=0;
                        </Grid>
                     </Grid>
                 </form>
-                <Typography variant="h6"style={{ color:'green'}}>
-                {message}
-              </Typography>
+               
                 </DialogContent>
                 <DialogActions>
+                <Typography variant="h6"style={{ color:'green'}}>
+                {message}
+                </Typography>
                 <Button onClick={handleClose} color="primary" autoFocus>
                    FERMER
                 </Button>

@@ -56,10 +56,7 @@ const useStyles = makeStyles({
     
   }
 });  
-const style ={
-    display: 'flex',
-    justifyContent: 'center'
-}
+
 let intervalID;
 export default function ListCurrentEvent() {  
   
@@ -115,6 +112,7 @@ const getUserPatrouilleurById = () => {
   userService.getUserById(window.localStorage.getItem('idUser'))
       .then(res => {
          let idPatrouille = res.idPatrouille;
+         console.log("idPatrouille",idPatrouille);
         setIdPat(idPatrouille);
         
       }) ;
@@ -247,11 +245,11 @@ const baliserEvent = () =>{
     if(res.error){
       setMessage("Erreur Erreur balisage ");
     }else{
-      setMessage("baliser avec succes");
+      setMessage("BALISAGE AVEC SUCCES");
     }
   
 }); 
-    // console.log("data",data);
+     console.log("data",data);
   
 }
 const annulerEvent = () =>{
@@ -285,10 +283,10 @@ let i=0;
   return (  
    
     <div>
-    <Typography variant="h4"  style={style}> Evenements</Typography>
+    <Typography variant="h4" style={{ display: 'flex',justifyContent: 'center'}}> Evenements</Typography>
 
     <Button variant="contained" color="primary" onClick={addEvenement}> 
-        Ouvrir Evenement
+       Annoncer Evènement
    </Button>
   {/* //  <Grid container alignItems="center" justify="center" >
   //  <Paper>
@@ -310,7 +308,7 @@ let i=0;
   
   
     <Paper  style={{marginTop:'20px'}} className={classes.root}>  
-    <Typography variant="h5"  style={style}>Evenements en cours</Typography>
+    <Typography variant="h5" style={{ color:'red',display: 'flex',justifyContent: 'center'}} >Evenements Annocés en Cours</Typography>
       <TableContainer className={classes.container}>  
         <Table stickyHeader aria-label="sticky table">  
         <TableHead>  
@@ -693,12 +691,13 @@ let i=0;
                     </Grid>
                   
                 </form>
-                <Typography variant="h6"style={{ color:'green'}}>
-                {message}
-             </Typography>
+               
             
                 </DialogContent>
                 <DialogActions>
+                <Typography variant="h6"style={{ color:'green'}}>
+                {message}
+             </Typography>
                 <Button onClick={handleClose} color="primary" autoFocus>
                    FERMER
                 </Button>

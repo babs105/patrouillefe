@@ -278,7 +278,10 @@ class AddPatrouiller extends React.Component {
                 <DialogTitle id="alert-dialog-title">{"INFORMATION"}</DialogTitle>
                 <DialogContent>
                 <DialogContentText id="alert-dialog-description">
+                <Typography variant="h6"style={{ color:'green'}}>
                 {this.state.message}
+                </Typography>
+               
                 </DialogContentText>
                 </DialogContent>
                 <DialogActions>

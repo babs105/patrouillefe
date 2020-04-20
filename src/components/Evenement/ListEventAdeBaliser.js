@@ -274,7 +274,7 @@ let i=0;
   
   
     <Paper  style={{marginTop:'20px'}}className={classes.root}>  
-    <Typography variant="h5"  style={style}>Evenements à Débaliser</Typography>
+    <Typography variant="h5"  style={{ color:'green',display: 'flex',justifyContent: 'center'}}>Evenements à Débaliser</Typography>
       <TableContainer className={classes.container}>  
         <Table stickyHeader aria-label="sticky table">  
         <TableHead>  
@@ -490,11 +490,12 @@ let i=0;
                        </Grid>
                     </Grid>
                 </form>
-                <Typography variant="h6"style={{ color:'green'}}>
-                {message}
-                 </Typography>       
+                     
                 </DialogContent>
                 <DialogActions>
+                <Typography variant="h6"style={{ color:'green'}}>
+                {message}
+                </Typography>
                 <Button onClick={handleClose} color="primary" autoFocus>
                    FERMER
                 </Button>

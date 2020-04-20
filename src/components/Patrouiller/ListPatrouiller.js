@@ -86,6 +86,7 @@ const loadAllPatrouillerEnCours = () => {
   setLoader(true)
   patrouillerService.getAllPatrouillerEnCours()
   .then((res) => {
+      //  if(res.equipePatrouille.)
       setData(res);
       setLoader(false)
       console.log(data);  
@@ -333,6 +334,9 @@ let i=0;
                 </DialogContent>
                
                 <DialogActions>
+                <Typography variant="h6"style={{ color:'green'}}>
+                {this.state.message}
+                </Typography>
                 <Button onClick={handleClose} color="primary" autoFocus>
                    FERMER
                 </Button>
