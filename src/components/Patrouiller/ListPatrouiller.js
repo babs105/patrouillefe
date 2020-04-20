@@ -335,7 +335,7 @@ let i=0;
                
                 <DialogActions>
                 <Typography variant="h6"style={{ color:'green'}}>
-                {this.state.message}
+                {message}
                 </Typography>
                 <Button onClick={handleClose} color="primary" autoFocus>
                    FERMER
