@@ -55,10 +55,13 @@ const style ={
     justifyContent: 'center'
 }
 let intervalID;
-export default function ListEventAssiter() {  
+export default function ListEventAssiter(props) { 
+  
   const classes = useStyles();  
+  const data1 = props.assister;
+
   const [page, setPage] = React.useState(0);  
-  const [data1, setData1] = useState([]);  
+  // const [data1, setData1] = useState([]);  
   const [idEvent,setIdEvent] = useState('');
   const [typeEvent,setTypeEvent] =  useState('');
   const [action,setAction] = useState('');
@@ -84,23 +87,24 @@ export default function ListEventAssiter() {
    useEffect(() => {    
           setLoader(true)
           // setIdPatrouille(window.localStorage.getItem('idPatrouille'));
-          intervalID = setInterval(
-            () => {  
-              loadAllEvenementEnCoursToAssister();
-                    },
-                    10000
-          );
-          loadAllEvenementEnCoursToAssister();
+          // intervalID = setInterval(
+          //   () => {  
+          //     loadAllEvenementEnCoursToAssister();
+          //           },
+          //           10000
+          // );
+          // setData1(props.assister)
+          //  loadAllEvenementEnCoursToAssister();
           //  loadAllEvenementEnCoursToAssister();
           // setData1(props.dataToAssist);
-          // console.log("recevData",props.dataToAssist)
+           console.log("ASSITER");
         
 }, []); 
-useEffect(() => {
-  return () => {
-    clearInterval(intervalID);
-  }
-}, []);
+// useEffect(() => {
+//   return () => {
+//     clearInterval(intervalID);
+//   }
+// }, []);
 
 // useEffect(() => {
 //   setData1(props.dataToAssist);
@@ -110,7 +114,7 @@ const loadAllEvenementEnCoursToAssister = () => {
  setLoader(true)
   evenementService.getAllEvenementEnCoursToAssister()
   .then((res) => {
-      setData1(res);
+      // setData1(res);
       setLoader(false)
       console.log(data1);  
   });   
@@ -319,7 +323,7 @@ const toRemorquer = () =>{
 let i=0;
 
   return (  
-   
+    
       <Grid>
     {/* <Typography variant="h4"  style={style}> Evenements</Typography> */}
 
@@ -345,6 +349,7 @@ let i=0;
      </Grid> */}
   
   
+
     <Paper  style={{marginTop:'20px'}}className={classes.root}>  
     <Typography variant="h5"  style={{ color:'orange',display: 'flex',justifyContent: 'center'}}>Evenements à Assister</Typography>
       <TableContainer className={classes.container}>  
@@ -361,18 +366,21 @@ let i=0;
         </TableRow>
           </TableHead>  
           <TableBody>  
-          {loader ?(
-            <Grid container alignItems="center" justify="center" >
+          {
+        //   loader
+        //    ?(
+        //     <Grid container alignItems="center" justify="center" >
                     
-                <Grid item md={12}>
-                  <Paper className={classes.paper } >
-                  <div className={classes.margin}>
-                    <Loader />
-                  </div> 
-                </Paper>
-                </Grid>
-          </Grid>
-        ):(
+        //         <Grid item md={12}>
+        //           <Paper className={classes.paper } >
+        //           <div className={classes.margin}>
+        //             <Loader />
+        //           </div> 
+        //         </Paper>
+        //         </Grid>
+        //   </Grid>
+        // )
+        // :(
             data1.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => {  
               return (  
                 <TableRow key={row.id}>
@@ -395,7 +403,8 @@ let i=0;
               );  
             })  
 
-   )}
+  //  )
+   }
           </TableBody>  
         </Table>  
       </TableContainer>  
@@ -560,6 +569,7 @@ let i=0;
                             </Select>
                         </FormControl> 
                     {/* </Grid> */}
+                    <br/>
                     <br/>
                     {action ==='debaliser' ?
                     ( 

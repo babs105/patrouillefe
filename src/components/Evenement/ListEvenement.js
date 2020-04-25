@@ -62,8 +62,11 @@ export default function ListCurrentEvent() {
   
   const classes = useStyles();  
   const [page, setPage] = React.useState(0);  
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);  
   const [data, setData] = useState([]); 
-  const [data1, setData1] = useState([]);   
+  const [data1, setData1] = useState([]);
+  const [data2, setData2] = useState([]);
+  const [data3, setData3] = useState([]);
   const [typeEvent,setTypeEvent] =  useState('');
   const [heureBalisage,setHeureBalisage] = useState('');
   const [matriculeVehicule,setMatriculeVehicule] = useState('');
@@ -80,7 +83,7 @@ export default function ListCurrentEvent() {
   const [loader,setLoader] = useState(false)
   const [alertOpen,setAlertOpen]= useState(false);
   const [message,setMessage] = useState('');
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);  
+ 
 
   useEffect(() => {    
           setLoader(true)
@@ -89,12 +92,18 @@ export default function ListCurrentEvent() {
             () => { 
               // getUserPatrouilleurById();
                loadAllEvenementEnCoursNoBaliser();
-              //  loadAllEvenementEnCoursToAssister();
+               loadAllEvenementEnCoursToAssister();
+               loadAllEvenementEnCoursToRemorquer();
+               loadAllEvenementAdeBaliser();
+              console.log("reload");
                     },
                     10000
           );
           getUserPatrouilleurById();
           loadAllEvenementEnCoursNoBaliser();
+          loadAllEvenementEnCoursToAssister();
+          loadAllEvenementEnCoursToRemorquer();
+          loadAllEvenementAdeBaliser();
           
         
         
@@ -133,15 +142,36 @@ const loadAllEvenementEnCoursNoBaliser = () => {
  
 }
 
-// const loadAllEvenementEnCoursToAssister = () => {
-//   setLoader(true)
-//    evenementService.getAllEvenementEnCoursToAssister()
-//    .then((res) => {
-//        setData1(res);
-//        setLoader(false)
-//        console.log("To assite",res);  
-//    });   
-//  }
+const loadAllEvenementEnCoursToAssister = () => {
+  setLoader(true)
+   evenementService.getAllEvenementEnCoursToAssister()
+   .then((res) => {
+       setData1(res);
+       setLoader(false)
+       console.log("To assite",res);  
+   });   
+ }
+
+ const loadAllEvenementEnCoursToRemorquer = () => {
+  setLoader(true);
+   evenementService.getAllEvenementEnCoursToRemorquer()
+   .then((res) => {
+       setData2(res);
+       setLoader(false);
+       
+   });   
+ }
+ const loadAllEvenementAdeBaliser = () => {
+  setLoader(true)
+   evenementService.getAllEvenementAdeBaliser()
+   .then((res) => {
+       setData3(res);
+       setLoader(false)
+       console.log(data1);  
+   });   
+ }
+
+
 const handleOpen = (idEvent,typeEvent) => {
   setIdEvent(idEvent);
   setTypeEvent(typeEvent);
@@ -188,7 +218,6 @@ const handleClose = () => {
   const onChangeHeureFinEvent = event => {  
     setHeureFinEvent(event.target.value);  
   };
-
 
   const onChangeOperation = event => {  
     setOperation(event.target.value);  
@@ -243,7 +272,7 @@ const baliserEvent = () =>{
   evenementService.baliserEvent(data)
   .then((res) => {
     if(res.error){
-      setMessage("Erreur Erreur balisage ");
+      setMessage(res.message);
     }else{
       setMessage("BALISAGE AVEC SUCCES");
     }
@@ -323,18 +352,19 @@ let i=0;
         </TableRow>
           </TableHead>  
           <TableBody>  
-          {loader ?(
-            <Grid container alignItems="center" justify="center" >
+          {
+          // loader ?(
+          //   <Grid container alignItems="center" justify="center" >
                     
-                <Grid item md={12}>
-                  <Paper className={classes.paper } >
-                  <div className={classes.margin}>
-                    <Loader/>
-                  </div> 
-                </Paper>
-                </Grid>
-          </Grid>)
-        :(
+          //       <Grid item md={12}>
+          //         <Paper className={classes.paper } >
+          //         <div className={classes.margin}>
+          //           <Loader/> 
+          //         </div> 
+          //       </Paper>
+          //       </Grid>
+          // </Grid>)
+          // :( 
             data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => {  
               return (  
            <TableRow key={row.id}>
@@ -357,7 +387,8 @@ let i=0;
               );  
             })  
 
-   )}
+  //  )
+   }
           </TableBody>  
         </Table>  
       </TableContainer>  
@@ -371,6 +402,78 @@ let i=0;
         onChangeRowsPerPage={handleChangeRowsPerPage}  
       />  
     </Paper>  
+
+
+    {/* <Paper  style={{marginTop:'20px'}} className={classes.root}>  
+    <Typography variant="h5" style={{ color:'red',display: 'flex',justifyContent: 'center'}} >Evenements Annocés en Cours</Typography>
+      <TableContainer className={classes.container}>  
+        <Table stickyHeader aria-label="sticky table">  
+        <TableHead>  
+        <TableRow>
+        <TableCell align="center">N°: </TableCell>
+            <TableCell align="center">DATE</TableCell>
+            <TableCell align="center">HEURE DEBUT  </TableCell>
+            <TableCell align="center">NATURE EVENEMENT</TableCell>
+            <TableCell align="center">PK </TableCell>
+            <TableCell align="center">CATEGORIE </TableCell>
+            <TableCell align="center">SECTEUR </TableCell>
+        </TableRow>
+          </TableHead>  
+          <TableBody>  
+          {
+          // loader ?(
+          //   <Grid container alignItems="center" justify="center" >
+                    
+          //       <Grid item md={12}>
+          //         <Paper className={classes.paper } >
+          //         <div className={classes.margin}>
+          //           <Loader/> 
+          //         </div> 
+          //       </Paper>
+          //       </Grid>
+          // </Grid>)
+          // :( 
+            data1.slice(page1 * rowsPerPage1, page1 * rowsPerPage1 + rowsPerPage1).map(row => {  
+              return (  
+           <TableRow key={row.id}>
+                  <TableCell align="center">{i=i+1}</TableCell>
+                <TableCell align="center" component="th" scope="row">
+                    {row.dateDebutEvent}
+                </TableCell>
+                <TableCell align="center">{row.heureDebutEvent}</TableCell>
+                <TableCell align="center">{row.typeEvenement}</TableCell>
+                <TableCell align="center">{row.pointKilometrique}</TableCell>
+                <TableCell align="center">{row.categorieV}</TableCell>
+                <TableCell align="center">{row.secteur}</TableCell> 
+                <TableCell align="right" > <Button variant="contained" color="primary" onClick={()=>handleOpen(row.id,row.typeEvenement)}> 
+                 Suivre
+            </Button></TableCell>
+                <TableCell align="right" onClick={() => editEvenement(row.id)}><CreateIcon /></TableCell>
+                <TableCell align="right" onClick={() => this.deletePatrouille(row.id)}><DeleteIcon /></TableCell> 
+        </TableRow>
+                 
+              );  
+            })  
+
+  //  )
+   }
+          </TableBody>  
+        </Table>  
+      </TableContainer>  
+      <TablePagination  
+        rowsPerPageOptions={[5, 10, 15]}  
+        component="div"  
+        count={data1.length}  
+        rowsPerPage={rowsPerPage1}  
+        page={page1}  
+        onChangePage={handleChangePage}  
+        onChangeRowsPerPage={handleChangeRowsPerPage}  
+      />  
+    </Paper>   */}
+
+
+
+
        <Dialog open={alertOpen}
                 onClose={handleClose}
                
@@ -381,10 +484,10 @@ let i=0;
                 {/* {message} */}
                 </DialogContentText>
                 <form >
-                    
+                <Grid container justify="center" spacing={4}>
                       {typeEvent==='ACCIDENT'?
                       (
-                    <Grid container justify="center" spacing={4}>
+                       <div>
                         <Grid item md={12} sm={12} xs={12}> 
                         <FormControl  className={classes.formControl}>
                             <InputLabel   id='action'>Action</InputLabel>
@@ -402,7 +505,7 @@ let i=0;
                    <br/>
                         {action ==='Baliser'?
                         (
-                          <Grid container justify="center" spacing={4}>
+                          <div>
                          <Grid item md={12}  sm={12} xs={12}>
                             <TextField
                                     id="heureBalisage"
@@ -420,7 +523,6 @@ let i=0;
                         </Grid>
                         <br/>
                         <Grid item md={12} sm={12} xs={12}>
-
                        <TextField
                                 id="matriculeVehicule"
                                 variant="outlined"
@@ -470,13 +572,13 @@ let i=0;
                       </Select>
                   </FormControl> 
               </Grid>
-                        </Grid> 
+              </div>
                       ):null}
-
-                  </Grid>
+                     
+                  </div>
                       ):typeEvent==='PANNE'?
                     (
-                      <Grid container justify="center" spacing={4}>
+                      <div>
                         <Grid item md={12} sm={12} xs={12}> 
                             <FormControl  className={classes.formControl}>
                                 <InputLabel   id='action'>Action</InputLabel>
@@ -495,7 +597,7 @@ let i=0;
                     <br/>
                     {action ==='Baliser'?
                     (
-                      <Grid container justify="center" spacing={4}>
+                    <div>
                      <Grid item md={12}  sm={12} xs={12}>
                         <TextField
                                 id="heureBalisage"
@@ -562,7 +664,7 @@ let i=0;
                       </Select>
                   </FormControl> 
               </Grid>
-                      </Grid>
+              </div>
 
                     ):action ==='Annuler'?
                     (
@@ -590,7 +692,7 @@ let i=0;
                     ):null
                   }
                     
-                    </Grid>
+                    </div>
                        ):typeEvent ==='BALAYAGE MECANIQUE'?(
                   <Grid>
                         <Grid item md={12} sm={12} xs={12}> 
@@ -689,7 +791,7 @@ let i=0;
                           <Button variant="contained"  color="primary" fullWidth onClick={ action === 'Baliser'? baliserEvent:annulerEvent } >Valider</Button>
                        </Grid>
                     </Grid>
-                  
+                  </Grid>
                 </form>
                
             
@@ -704,9 +806,11 @@ let i=0;
         </DialogActions>
       </Dialog>
 
-      <ListEventForAssistance  />
-      <ListEventForRemorquage />
-      <ListEventAdeBaliser/>
+      {data1?<ListEventForAssistance assister={data1} />:null} 
+      {data2?<ListEventForRemorquage remorquer={data2} />:null} 
+      {data3?<ListEventAdeBaliser debaliser={data3} />:null} 
+      {/* <ListEventForRemorquage />
+      <ListEventAdeBaliser/>  */}
      
     </div>
   );

@@ -56,8 +56,9 @@ const style ={
     justifyContent: 'center'
 }
 let intervalID;
-export default function ListEventAdeBaliser() {  
+export default function ListEventAdeBaliser(props) {  
   const classes = useStyles();  
+  const data3 = props.debaliser;
   const [page, setPage] = React.useState(0);  
   const [data1, setData1] = useState([]);  
   const [date,setDate] = useState();
@@ -76,23 +77,23 @@ export default function ListEventAdeBaliser() {
   useEffect(() => {    
           setLoader(true)
           // setIdPatrouille(window.localStorage.getItem('idPatrouille'));
-          intervalID = setInterval(
-            () => {  
-              loadAllEvenementAdeBaliser();
+          // intervalID = setInterval(
+          //   () => {  
+          //     loadAllEvenementAdeBaliser();
             
               
-                    },
-                    10000
-          );
-          loadAllEvenementAdeBaliser();
+          //           },
+          //           10000
+          // );
+          // loadAllEvenementAdeBaliser();
                  
         
 }, []); 
-useEffect(() => {
-  return () => {
-    clearInterval(intervalID);
-  }
-}, []);
+// useEffect(() => {
+//   return () => {
+//     clearInterval(intervalID);
+//   }
+// }, []);
 
 const loadAllEvenementAdeBaliser = () => {
  setLoader(true)
@@ -289,19 +290,21 @@ let i=0;
         </TableRow>
           </TableHead>  
           <TableBody>  
-          {loader ?(
-       <Grid container alignItems="center" justify="center" >
+          {
+    //       loader ?(
+    //    <Grid container alignItems="center" justify="center" >
                
-          <Grid item md={12}>
-            <Paper className={classes.paper } >
-            <div className={classes.margin}>
-              <Loader/>
-            </div> 
-           </Paper>
-          </Grid>
-     </Grid>)
-         :(
-            data1.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => {  
+    //       <Grid item md={12}>
+    //         <Paper className={classes.paper } >
+    //         <div className={classes.margin}>
+    //           <Loader/>
+    //         </div> 
+    //        </Paper>
+    //       </Grid>
+    //  </Grid>
+    //  )
+        //  :(
+           data3.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => {  
               return (  
                 <TableRow key={row.id}>
                   <TableCell align="center">{i=i+1}</TableCell>
@@ -323,7 +326,8 @@ let i=0;
               );  
             })  
 
-   )}
+  //  )
+   }
           </TableBody>  
         </Table>  
       </TableContainer>  

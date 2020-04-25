@@ -49,8 +49,9 @@ const style ={
     justifyContent: 'center'
 }
 let intervalID;
-export default function ListForRemorquage() {  
+export default function ListForRemorquage(props) {  
   const classes = useStyles();  
+  const data2 = props.remorquer;
   const [page, setPage] = React.useState(0);  
   const [data1, setData1] = useState([]);  
   const [idEvent,setIdEvent] = useState('');
@@ -74,20 +75,20 @@ export default function ListForRemorquage() {
   useEffect(() => {    
           setLoader(true)
 //           // setIdPatrouille(window.localStorage.getItem('idPatrouille'));
-          intervalID = setInterval(
-            () => {  
-                     loadAllEvenementEnCoursToRemorquer();
-                    },10000);
-          loadAllEvenementEnCoursToRemorquer();
+          // intervalID = setInterval(
+          //   () => {  
+          //            loadAllEvenementEnCoursToRemorquer();
+          //           },10000);
+          // loadAllEvenementEnCoursToRemorquer();
                  
         
 }, []); 
 
-useEffect(() => {
-  return () => {
-    clearInterval(intervalID);
-  }
-}, []);
+// useEffect(() => {
+//   return () => {
+//     clearInterval(intervalID);
+//   }
+// }, []);
 
 const loadAllEvenementEnCoursToRemorquer = () => {
  setLoader(true);
@@ -316,19 +317,21 @@ let i=0;
         </TableRow>
           </TableHead>  
           <TableBody>  
-          {loader?(
-       <Grid container alignItems="center" justify="center" >
+          {
+    //       loader?(
+    //    <Grid container alignItems="center" justify="center" >
                
-          <Grid item md={12}>
-            <Paper className={classes.paper } >
-            <div className={classes.margin}>
-              <Loader/>
-            </div> 
-           </Paper>
-          </Grid>
-     </Grid>)
-       :(
-            data1.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => {  
+    //       <Grid item md={12}>
+    //         <Paper className={classes.paper } >
+    //         <div className={classes.margin}>
+    //           <Loader/>
+    //         </div> 
+    //        </Paper>
+    //       </Grid>
+    //  </Grid>
+    //  )
+    //    :(
+            data2.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => {  
               return (  
                 <TableRow key={row.id}>
                   <TableCell align="center">{i=i+1}</TableCell>
@@ -350,14 +353,15 @@ let i=0;
               );  
             })  
 
-   )}
+  //  )
+   }
           </TableBody>  
         </Table>  
       </TableContainer>  
       <TablePagination  
         rowsPerPageOptions={[5, 10, 15]}  
         component="div"  
-        count={data1.length}  
+        count={data2.length}  
         rowsPerPage={rowsPerPage}  
         page={page}  
         onChangePage={handleChangePage}  
