@@ -33,21 +33,21 @@ const useStyles = makeStyles({
     width: '100%',  
   },  
   container: {  
-    height:'100%',  
-    width:'100%', 
+    maxHeight:500,  
+    width:'100%',  
   },
   formControl: {
   width:200,
-  margin:4,
+ 
   },
   textField:{
     width:200,
-    margin:2,
+    
     
   }  ,
   widthDialog:{
-    height:'100%', 
-    width:'100%',
+   
+    width:300,
   }
 });  
 const style ={
@@ -418,7 +418,7 @@ let i=0;
         onChangeRowsPerPage={handleChangeRowsPerPage}  
       />  
     </Paper>  
-       <Dialog className={classes.container}  open={alertOpen}
+       <Dialog  open={alertOpen}
                 onClose={handleClose}
                 >
                 <DialogTitle id="alert-dialog-title">{"SUIVI EVENEMENT"}</DialogTitle>
@@ -427,11 +427,10 @@ let i=0;
                 {/* {message} */}
                 </DialogContentText>
                 <form >
-                    <Grid container justify="center" alignItems="center" spacing={2}>
+                    <Grid container justify="center" spacing={4}>
                       {typeEvent === 'ACCIDENT'
                        ?(
-                        // <Grid container justify="center" alignItems="center" spacing={2}>
-                        <Grid item md={12}  sm={12} xs={12}>
+                        <div>
                         <Grid item md={12}  sm={12} xs={12}>
                           <TextField
                                   id="heureArriveGen"
@@ -546,10 +545,11 @@ let i=0;
                            />
                       </Grid>
                       
-                      </Grid>
+                      </div>
                       
 
                       ):(
+                        <div>
                         <Grid item md={12}  sm={12} xs={12}>
                     {/* <Grid item md={12} sm={12} xs={12}>  */}
                             <FormControl  className={classes.formControl}>
@@ -568,7 +568,7 @@ let i=0;
                                
                             </Select>
                         </FormControl> 
-                    {/* </Grid> */}
+                      </Grid> 
                     <br/>
                     <br/>
                     {action ==='debaliser' ?
@@ -605,14 +605,16 @@ let i=0;
                                }}
                            /> 
                    </Grid>
+                   <br/>
                     </div> 
                     ): 
                     null }
-                    </Grid>
+                    </div>
+                  
                       )}
                     </Grid>
-                    <Grid container justify="center" style={{marginTop:'5px',marginBottom:'5px'}}  alignItems="center">
-                        <Grid item md={6} sm={4} xs={12}>
+                    <Grid container justify="center" style={{marginTop:'5px'}} spacing={4} alignItems="center"  >
+                        <Grid item md={6} sm={12} xs={12}>
                           <Button variant="contained"  color ="primary" fullWidth
                            onClick=
                            {typeEvent ==='PANNE'?

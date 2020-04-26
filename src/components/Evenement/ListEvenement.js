@@ -40,8 +40,8 @@ const useStyles = makeStyles({
     width: '100%',  
   },  
   container: {  
-    maxHeight:500,  
-    width:'100%', 
+    // height:'100%',  
+    // width:'100%', 
   },
   formControl: {
   width:200,
@@ -475,19 +475,19 @@ let i=0;
 
 
        <Dialog open={alertOpen}
-                onClose={handleClose}
                
+                onClose={handleClose}
                 >
                 <DialogTitle id="alert-dialog-title">{"SUIVI EVENEMENT"}</DialogTitle>
                 <DialogContent  className={classes.widthDialog}>
                 <DialogContentText id="alert-dialog-description">
                 {/* {message} */}
                 </DialogContentText>
-                <form >
-                <Grid container justify="center" spacing={4}>
+                <form>
+                <Grid container justify="center"spacing={4}>
                       {typeEvent==='ACCIDENT'?
                       (
-                       <div>
+                      <div>
                         <Grid item md={12} sm={12} xs={12}> 
                         <FormControl  className={classes.formControl}>
                             <InputLabel   id='action'>Action</InputLabel>
@@ -501,12 +501,12 @@ let i=0;
                               <MenuItem value="Baliser" key={2} name="categorie">Baliser</MenuItem> 
                           </Select>
                          </FormControl> 
-                   </Grid>
+                    </Grid>
                    <br/>
                         {action ==='Baliser'?
                         (
                           <div>
-                         <Grid item md={12}  sm={12} xs={12}>
+                         <Grid item md={12} sm={12} xs={12}>
                             <TextField
                                     id="heureBalisage"
                                     variant="outlined"
@@ -566,16 +566,14 @@ let i=0;
                               onChange={onChangeOperation}
                               >
                             <MenuItem value="assister"key={1} name="operation">A Assister</MenuItem>
-                           
-                      
-                         
+
                       </Select>
                   </FormControl> 
               </Grid>
               </div>
                       ):null}
                      
-                  </div>
+                   </div> 
                       ):typeEvent==='PANNE'?
                     (
                       <div>
@@ -694,7 +692,7 @@ let i=0;
                     
                     </div>
                        ):typeEvent ==='BALAYAGE MECANIQUE'?(
-                  <Grid>
+                  <div>
                         <Grid item md={12} sm={12} xs={12}> 
                               <FormControl  className={classes.formControl}>
                                   <InputLabel   id='action'>Action  à faire </InputLabel>
@@ -712,7 +710,7 @@ let i=0;
                         <br/>
                       {action === 'fermer' ?
                         (
-                          <Grid container justify="center" spacing={4}>
+                          <div>
                           <Grid item md={12}  sm={12} xs={12}>
                             <TextField
                                     id="heureFinEvent"
@@ -776,22 +774,22 @@ let i=0;
                             </Select>
                         </FormControl> 
                    </Grid>
-                     </Grid>
+                   </div>
                 
                     
                        ):null}
 
-                  </Grid> 
+                     </div>
                       ):null
                     }
                 
-                    
-                    <Grid container justify="center"style={{marginTop:'10px'}} spacing={8} alignItems="center">
+                </Grid>
+                    <Grid container justify="center"style={{marginTop:'5px'}} spacing={5} alignItems="center">
                         <Grid item md={6} sm={4} xs={12}>
                           <Button variant="contained"  color="primary" fullWidth onClick={ action === 'Baliser'? baliserEvent:annulerEvent } >Valider</Button>
                        </Grid>
                     </Grid>
-                  </Grid>
+                 
                 </form>
                
             

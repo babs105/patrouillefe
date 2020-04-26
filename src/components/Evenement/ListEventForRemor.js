@@ -847,8 +847,8 @@ let i=0;
                       
                 
                     </Grid>
-                    <Grid container justify="center" style={{marginTop:'10px'}} spacing={3} alignItems="center">
-                        <Grid item md={6} sm={4} xs={12}>
+                    <Grid container justify="center" style={{marginTop:'10px'}} spacing={4} alignItems="center">
+                        <Grid item md={6} sm={12} xs={12}>
                           <Button variant="contained"  color ="primary" fullWidth 
                           onClick =
                               {

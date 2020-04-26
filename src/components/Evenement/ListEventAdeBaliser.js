@@ -334,7 +334,7 @@ let i=0;
       <TablePagination  
         rowsPerPageOptions={[5, 10, 15]}  
         component="div"  
-        count={data1.length}  
+        count={data3.length}  
         rowsPerPage={rowsPerPage}  
         page={page}  
         onChangePage={handleChangePage}  
@@ -350,7 +350,8 @@ let i=0;
                 {/* {message} */}
                 </DialogContentText>
                 <form >
-                    <Grid container justify="center" spacing={4}>
+                  <Grid container justify="center" spacing={4} alignItems="center">
+                  <div>
                     <Grid item md={12} sm={12} xs={12}> 
                             <FormControl  className={classes.formControl}>
                                 <InputLabel   id='action'>Action à Faire</InputLabel>
@@ -363,15 +364,14 @@ let i=0;
                                     >
                                   <MenuItem value="debaliser" key={1} name="action">Débaliser</MenuItem>
                                   <MenuItem value="fermer" key={2} name="action">Fermer</MenuItem>  
-                                 
-                            
-                               
+                              
                             </Select>
                         </FormControl> 
                     </Grid>
+                    <br/>
                     { typeEvent ==='ACCIDENT'?
                       action ==='debaliser' ?(
-                      <Grid>
+                      <div>
 
                        <Grid item md={12} sm={12} xs={12}>
                         <TextField
@@ -405,39 +405,8 @@ let i=0;
                             /> 
                     </Grid>
                     <br/>
-                        {/* <Grid item md={12}  sm={12} xs={12}>
-                         <TextField
-                                 id="heureDepGen"
-                                 variant="outlined"
-                                 label="Heure départ Gendarmes"
-                                 name="heureDepGen"
-                                 type="time"
-                                 value={heureDepGen}
-                                 onChange={onChangeHeureDepGen}
-                                 className={classes.textField}
-                                 InputLabelProps={{
-                                 shrink: true,
-                                 }}
-                             /> 
-                         
-                     </Grid> *
-                     <br/>
-                     <Grid item md={12}  sm={12} xs={12}>
-                         <TextField
-                                 id="heureDepSap"
-                                 variant="outlined"
-                                 label="Heure départ Sapeurs"
-                                 name="heureDepSap"
-                                 type="time"
-                                 value={heureDepSap}
-                                 onChange={onChangeHeureDepSap}
-                                 className={classes.textField}
-                                 InputLabelProps={{
-                                 shrink: true,
-                                 }}
-                             /> 
-                     </Grid>  */}
-                  </Grid>
+                      
+                  </div>
                   ):null
                   
                    :typeEvent ==='PANNE'?
@@ -475,12 +444,14 @@ let i=0;
                                 }}
                             /> 
                     </Grid>
+                    <br/>
                      </div> 
                     ): null 
-                  :null}
-               
-                    </Grid>
-                    <Grid container justify="center" style={{marginTop:'10px'}} spacing={3} alignItems="center">
+                  :null
+                  }
+               </div>
+             </Grid>
+                    <Grid container justify="center" style={{marginTop:'10px'}} spacing={4} alignItems="center">
                         <Grid item md={6} sm={4} xs={12}>
                           <Button variant="contained"  color ="primary" fullWidth
                            onClick=
@@ -490,9 +461,12 @@ let i=0;
                               action === 'debaliser'? deBaliserAccident :null
                             :null} 
                             >
-                            Valider</Button>
+                            Valider
+                            </Button>
                        </Grid>
+
                     </Grid>
+                    
                 </form>
                      
                 </DialogContent>
