@@ -271,7 +271,7 @@ const baliserEvent = () =>{
   }
   evenementService.baliserEvent(data)
   .then((res) => {
-    if(res.error){
+    if(res.error===true){
       setMessage(res.message);
     }else{
       setMessage("BALISAGE AVEC SUCCES");
