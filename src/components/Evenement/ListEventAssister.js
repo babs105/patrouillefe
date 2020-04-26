@@ -510,7 +510,7 @@ let i=0;
                            <br/>
                            <Grid item md={12}  sm={12} xs={12}>
                                 <FormControl  className={classes.formControl}>
-                                <InputLabel   id='nbrVoieImplique'>Nombre de voies impliquées</InputLabel>
+                                <InputLabel   id='nbrVoieImplique'>Voies impliquées</InputLabel>
                                 <Select  
                                     name='nbrVoieImplique'
                                     id='nbrVoieImplique'  
@@ -625,7 +625,7 @@ let i=0;
                   
                       )}
                     </Grid>
-                    <Grid container justify="center" style={{marginTop:'5px'}} spacing={4} alignItems="center"  >
+                    <Grid container justify="center" style={{marginTop:'10px'}} spacing={4} alignItems="center"  >
                         <Grid item md={6} sm={12} xs={12}>
                           <Button variant="contained"  color ="primary" fullWidth
                            onClick=
