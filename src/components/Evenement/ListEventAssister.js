@@ -47,6 +47,7 @@ const useStyles = makeStyles({
   }  ,
   widthDialog:{
    
+    width:300,
     
   }
 });  
