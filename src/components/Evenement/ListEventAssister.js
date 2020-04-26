@@ -427,7 +427,7 @@ let i=0;
                 {/* {message} */}
                 </DialogContentText>
                 <form >
-                    <Grid container justify="center" spacing={4}>
+                    <Grid container justify="center" alignItems="center" spacing={4}>
                       {typeEvent === 'ACCIDENT'
                        ?(
                         <div>
@@ -445,6 +445,9 @@ let i=0;
                                   shrink: true,
                                   }}
                               /> 
+                               </Grid>
+                              <br/>
+                              <Grid item md={12}  sm={12} xs={12}>
                                  <TextField
                                  id="heureDepGen"
                                  variant="outlined"
@@ -475,6 +478,9 @@ let i=0;
                                   shrink: true,
                                   }}
                               /> 
+                                 </Grid> 
+                                 <br/>
+                                 <Grid item md={12} sm={12} xs={12}>
                                 <TextField
                                  id="heureDepSap"
                                  variant="outlined"
@@ -500,6 +506,9 @@ let i=0;
                           value={nbVehiculeAccidente} 
                           onChange={onChangeNbVehiculeAccidente} 
                            />
+                           </Grid> 
+                           <br/>
+                           <Grid item md={12}  sm={12} xs={12}>
                                 <FormControl  className={classes.formControl}>
                                 <InputLabel   id='nbrVoieImplique'>Nombre de voies impliquées</InputLabel>
                                 <Select  
@@ -522,25 +531,28 @@ let i=0;
                       <br/>
                       
                       <Grid item md={12}  sm={12} xs={12}>
-                       <TextField  className={classes.textField}
-                        id="nbBlesse"
-                         variant="outlined" 
-                         label="Nombre de Blessés "
-                          type="number" 
-                          name="nbBlesse" 
-                          value={nbBlesse} 
-                          onChange={onChangeNbBlesse} 
-                        
-                           />
+                              <TextField  className={classes.textField}
+                                id="nbBlesse"
+                                variant="outlined" 
+                                label="Nombre de Blessés "
+                                  type="number" 
+                                  name="nbBlesse" 
+                                  value={nbBlesse} 
+                                  onChange={onChangeNbBlesse} 
+                                
+                                  />
+                        </Grid>
+                            <br/>
+                         <Grid item md={12}  sm={12} xs={12}>
                             <TextField  className={classes.textField}
-                        id="nbMort"
-                         variant="outlined" 
-                         label="Nombre de Mort "
-                          type="number" 
-                          name="nbMort" 
-                          value={nbMort} 
-                          onChange={onChangeNbMort} 
-                    
+                                id="nbMort"
+                                variant="outlined" 
+                                label="Nombre de Mort "
+                                  type="number" 
+                                  name="nbMort" 
+                                  value={nbMort} 
+                                  onChange={onChangeNbMort} 
+                            
                           
                            />
                       </Grid>
