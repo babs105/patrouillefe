@@ -47,7 +47,7 @@ const useStyles = makeStyles({
   }  ,
   widthDialog:{
    
-    width:300,
+    
   }
 });  
 const style ={
@@ -431,7 +431,7 @@ let i=0;
                       {typeEvent === 'ACCIDENT'
                        ?(
                         <div>
-                        <Grid item md={12}  sm={12} xs={12}>
+                        <Grid item md={12} sm={12} xs={12}>
                           <TextField
                                   id="heureArriveGen"
                                   variant="outlined"
