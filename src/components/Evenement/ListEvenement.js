@@ -273,13 +273,14 @@ const baliserEvent = () =>{
   .then((res) => {
     if(res.error){
       setMessage(res.message);
+      console.log("RES",res)
     }else{
       setMessage("BALISAGE AVEC SUCCES");
-      
+      console.log("RES",res)
     }
   
 }); 
-     console.log("data",data)
+    //  console.log("data",data)
   
 }
 const annulerEvent = () =>{
