@@ -73,7 +73,7 @@ export default function ListForRemorquage(props) {
   const [rowsPerPage, setRowsPerPage] = React.useState(5);  
 
   useEffect(() => {    
-          setLoader(true)
+          // setLoader(true)
 //           // setIdPatrouille(window.localStorage.getItem('idPatrouille'));
           // intervalID = setInterval(
           //   () => {  
@@ -90,15 +90,15 @@ export default function ListForRemorquage(props) {
 //   }
 // }, []);
 
-const loadAllEvenementEnCoursToRemorquer = () => {
- setLoader(true);
-  evenementService.getAllEvenementEnCoursToRemorquer()
-  .then((res) => {
-      setData1(res);
-      setLoader(false);
+// const loadAllEvenementEnCoursToRemorquer = () => {
+//  setLoader(true);
+//   evenementService.getAllEvenementEnCoursToRemorquer()
+//   .then((res) => {
+//       setData1(res);
+//       setLoader(false);
       
-  });   
-}
+//   });   
+// }
 
 
 
@@ -197,6 +197,7 @@ const handleClose = () => {
    
 // };
 const remorkVehicule = () =>{
+  setLoader(true)
       let data = {
         idEvent:idEvent,
         dateRemorquage:date,
@@ -210,8 +211,10 @@ const remorkVehicule = () =>{
   .then((res) => {
     if(res.error){
       setMessage("Erreur Erreur  réesseyez");
+      setLoader(false)
     }else{
       setMessage("REMORQUAGE avec succes");
+      setLoader(false)
     }
   
 }); 
@@ -220,6 +223,7 @@ const remorkVehicule = () =>{
 }
 
 const annulerRemorquage = () =>{
+  setLoader(true)
   let data = {
     idEvent:idEvent,
     action:action,
@@ -233,8 +237,10 @@ evenementService.annulerRemorquage(data)
 .then((res) => {
 if(res.error){
   setMessage("Erreur Erreur  réesseyez");
+  setLoader(false)
 }else{
-  setMessage("REMORQUAGE Annuler avec succes");
+  setMessage("Remorquage Annulé ");
+  setLoader(false)
 }
 
 }); 
@@ -243,6 +249,7 @@ if(res.error){
 }
 
 const infosAccident = () =>{
+  setLoader(true)
   let data = {
     idEvent:idEvent,
     heureDepGen:heureDepGen,
@@ -253,8 +260,10 @@ evenementService.infosAccident(data)
 .then((res) => {
 if(res.error){
   setMessage("Erreur Erreur  réesseyez");
+  setLoader(false)
 }else{
   setMessage("Autres info ajoutés avec succes");
+  setLoader(false)
 }
 
 }); 
@@ -867,7 +876,7 @@ let i=0;
                 </DialogContent>
                 <DialogActions>
                 <Typography variant="h6"style={{ color:'green'}}>
-                {message}
+                    {loader ? <Loader/> : message }
                 </Typography>
                 
                 <Button onClick={handleClose} color="primary" autoFocus>

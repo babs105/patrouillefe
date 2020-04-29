@@ -86,7 +86,7 @@ export default function ListCurrentEvent() {
  
 
   useEffect(() => {    
-          setLoader(true)
+          
         
           intervalID = setInterval(
             () => { 
@@ -129,12 +129,12 @@ const getUserPatrouilleurById = () => {
     };
 
 const loadAllEvenementEnCoursNoBaliser = () => {
- setLoader(true)
+//  setLoader(true)
  
   evenementService.getAllEvenementEnCoursNoBaliser()
   .then((res) => {
       setData(res);
-      setLoader(false)
+      //setLoader(false)
       // console.log("to balise",data);
      
   }); 
@@ -143,30 +143,29 @@ const loadAllEvenementEnCoursNoBaliser = () => {
 }
 
 const loadAllEvenementEnCoursToAssister = () => {
-  setLoader(true)
+  // setLoader(true)
    evenementService.getAllEvenementEnCoursToAssister()
    .then((res) => {
        setData1(res);
-       setLoader(false)
+      //  setLoader(false)
        console.log("To assite",res);  
    });   
  }
 
  const loadAllEvenementEnCoursToRemorquer = () => {
-  setLoader(true);
+  
    evenementService.getAllEvenementEnCoursToRemorquer()
    .then((res) => {
        setData2(res);
-       setLoader(false);
+      //  setLoader(false);
        
    });   
  }
  const loadAllEvenementAdeBaliser = () => {
-  setLoader(true)
    evenementService.getAllEvenementAdeBaliser()
    .then((res) => {
        setData3(res);
-       setLoader(false)
+      //  setLoader(false)
        console.log(data1);  
    });   
  }
@@ -260,6 +259,8 @@ const handleClose = () => {
    
 // };
 const baliserEvent = () =>{
+  setLoader(true)
+
   let data = {
 
      idEvent:idEvent,
@@ -273,8 +274,10 @@ const baliserEvent = () =>{
   .then((res) => {
     if(res.error){
       setMessage(res.message);
+      setLoader(false)
       console.log("RES",res)
     }else{
+      setLoader(false)
       setMessage("BALISAGE AVEC SUCCES");
       console.log("RES",res)
     }
@@ -284,6 +287,7 @@ const baliserEvent = () =>{
   
 }
 const annulerEvent = () =>{
+  setLoader(true)
   let data = {
     idEvent:idEvent,
     action:action,
@@ -293,8 +297,11 @@ const annulerEvent = () =>{
   .then((res) => {
     if(res.error){
       setMessage("Erreur Erreur annuler evenement ");
+      setLoader(false)
     }else{
       setMessage("Evenement annulé  avec succes");
+      setLoader(false)
+
     }
   
 }); 
@@ -797,9 +804,11 @@ let i=0;
             
                 </DialogContent>
                 <DialogActions>
-                <Typography variant="h6"style={{ color:'green'}}>
-                {message}
-             </Typography>
+         
+              <Typography variant="h6"style={{ color:'green'}}>
+                {loader ? <Loader/> : message }
+              </Typography>
+
                 <Button onClick={handleClose} color="primary" autoFocus>
                    FERMER
                 </Button>

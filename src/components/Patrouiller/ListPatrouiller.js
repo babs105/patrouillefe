@@ -142,6 +142,7 @@ const handleOpen = (idPatrouiller) => {
    
 };
 const terminerPatrouiller = () =>{
+  setLoader(true)
   let data = {
      idPatrouille:idPatrouiller,
      dateFin:date,
@@ -152,8 +153,10 @@ const terminerPatrouiller = () =>{
   .then((res) => {
     if(res.error){
       setMessage("Erreur Erreur réssèyez  plutard ");
+      setLoader(false)
     }else{
       setMessage("Patrouille Terminée avec succes");
+      setLoader(false)
     }
   
 }); 
@@ -219,7 +222,7 @@ let i=0;
     <Grid item >
       <Paper className={classes.paper } >
        <div className={classes.margin}>
-       <Loader/>
+       {/* <Loader/> */}
       
        </div>
     </Paper>
@@ -268,7 +271,6 @@ let i=0;
                 <DialogTitle id="alert-dialog-title">{"TERMINER PATROUILLE"}</DialogTitle>
                 <DialogContent className={classes.widthDialog}>
                 <DialogContentText id="alert-dialog-description">
-                {message}
                 </DialogContentText>
                 <br/>
                 <form >
@@ -332,10 +334,10 @@ let i=0;
                 </form>
                 <br/>
                 </DialogContent>
-               
+                
                 <DialogActions>
                 <Typography variant="h6"style={{ color:'green'}}>
-                {message}
+                {loader ? <Loader/> : message }
                 </Typography>
                 <Button onClick={handleClose} color="primary" autoFocus>
                    FERMER

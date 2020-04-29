@@ -7,6 +7,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import {vehiculeService} from '../../service/vehiculeService';
 import {patrouillerService} from '../../service/patrouillerService';
+import Loader from '../loader/Loader';
 
 import {userService} from '../../service/userService';
 import { Paper, withStyles, Grid, TextField, Button,Select,MenuItem,InputLabel,FormControl} from '@material-ui/core';
@@ -52,7 +53,8 @@ class AddPatrouiller extends React.Component {
             matriculePat1:'',
             matriculePat2:'',
             alertOpen:false,
-            message: null
+            message: null,
+            loader:false
         }
         
     }
@@ -94,6 +96,7 @@ class AddPatrouiller extends React.Component {
 
 
     demarrerPatrouiller = (e) => {
+        this.setState({loader:true});
         e.preventDefault();
         let patrouiller = {
              date: this.state.date,
@@ -104,18 +107,19 @@ class AddPatrouiller extends React.Component {
              matriculePat1:this.state.matriculePat1,
              matriculePat2:this.state.matriculePat2
             };
-
+            this.setState({alertOpen : true});
         patrouillerService.demarrerPatrouiller(patrouiller)
             .then(res => {
                 if(res.error){
                 this.setState({message : 'Patrouille NON enregistrée'});
-                this.setState({alertOpen : true});
+                this.setState({loader:false});
+        
             }else{
                 
                 // window.localStorage.setItem('idPatrouille', res.patrouille.id);
                 // window.localStorage.setItem('idTeam', res.patrouille.equipePatrouille);
                 this.setState({message : 'Patrouille enregistrée'});
-                this.setState({alertOpen : true});
+                this.setState({loader:false});
                 // this.getUserPatrouilleurById();
             }
                 //||||||||||||||||||||||
@@ -279,7 +283,7 @@ class AddPatrouiller extends React.Component {
                 <DialogContent>
                 <DialogContentText id="alert-dialog-description">
                 <Typography variant="h6"style={{ color:'green'}}>
-                {this.state.message}
+                  {this.state.loader ? <Loader/> : this.state.message}
                 </Typography>
                
                 </DialogContentText>

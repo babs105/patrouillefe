@@ -75,7 +75,7 @@ export default function ListEventAdeBaliser(props) {
   const [rowsPerPage, setRowsPerPage] = React.useState(5);  
 
   useEffect(() => {    
-          setLoader(true)
+          // setLoader(true)
           // setIdPatrouille(window.localStorage.getItem('idPatrouille'));
           // intervalID = setInterval(
           //   () => {  
@@ -95,15 +95,15 @@ export default function ListEventAdeBaliser(props) {
 //   }
 // }, []);
 
-const loadAllEvenementAdeBaliser = () => {
- setLoader(true)
-  evenementService.getAllEvenementAdeBaliser()
-  .then((res) => {
-      setData1(res);
-      setLoader(false)
-      console.log(data1);  
-  });   
-}
+// const loadAllEvenementAdeBaliser = () => {
+//  setLoader(true)
+//   evenementService.getAllEvenementAdeBaliser()
+//   .then((res) => {
+//       setData1(res);
+//       setLoader(false)
+//       console.log(data1);  
+//   });   
+// }
 
  
     const handleOpen = (idEvent,typeEvent) => {
@@ -178,6 +178,7 @@ const handleClose = () => {
    
 // };
 const deBaliserEvent = () =>{
+  setLoader(true)
       let data = {
         idEvent:idEvent,
         dateDeBalisage:date,
@@ -187,8 +188,11 @@ const deBaliserEvent = () =>{
   .then((res) => {
     if(res.error){
       setMessage("Erreur Erreur  réesseyez");
+      setLoader(false)
     }else{
       setMessage("Evenement debalisé avec succes");
+      setLoader(false)
+
     }
   
 }); 
@@ -196,6 +200,7 @@ const deBaliserEvent = () =>{
   
 }
 const deBaliserAccident = () =>{
+  setLoader(true)
   let data = {
     idEvent:idEvent,
     dateDeBalisage:date,
@@ -207,8 +212,10 @@ evenementService.deBaliserAccident(data)
 .then((res) => {
 if(res.error){
   setMessage("Erreur Erreur  réesseyez");
+  setLoader(false)
 }else{
   setMessage("Evenement debalisé avec succes");
+  setLoader(false)
 }
 
 }); 
@@ -472,7 +479,7 @@ let i=0;
                 </DialogContent>
                 <DialogActions>
                 <Typography variant="h6"style={{ color:'green'}}>
-                {message}
+                {loader ? <Loader/> : message }
                 </Typography>
                 <Button onClick={handleClose} color="primary" autoFocus>
                    FERMER

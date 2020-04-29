@@ -8,6 +8,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import {vehiculeService} from '../../service/vehiculeService';
 import {evenementService} from '../../service/evenementService';
 import {patrouilleurService} from '../../service/patrouilleurService';
+import Loader from '../loader/Loader';
 import { Paper, withStyles, Grid, TextField, Button,Select,MenuItem,InputLabel,FormControl} from '@material-ui/core';
 
 const styles = theme => ({
@@ -51,7 +52,8 @@ class AddEvent extends React.Component {
             pointKilometrique:'',
             alertOpen:false,
             message: null,
-            error:''
+            error:'',
+            loader:false,
             
         }
         
@@ -81,6 +83,7 @@ class AddEvent extends React.Component {
             
     // }
     openEvent = (e) => {
+        this.setState({loader:true});
         e.preventDefault();
         let heureOuvertureEvement = this.state.heureOuvertureEvement;
         let err='';
@@ -100,19 +103,21 @@ class AddEvent extends React.Component {
                 position:this.state.position,
                 pointKilometrique :this.state.autoroute+" "+this.state.distance+" "+this.state.sens,
                };
+        this.setState({alertOpen : true});
         evenementService.openEvent(event)
             .then(res => {
+               
                 if(res.error){
                 this.setState({message : 'Erreur Annonce Evenement'});
-                this.setState({alertOpen : true});
+                this.setState({loader:false});
             }else {
                     this.setState({message : 'Evenement annoncé avec succes'});
-                    this.setState({alertOpen : true});
+                    this.setState({loader:false});
             }
                 // 
                 
             });
-         console.log("evenement",event);
+        //  console.log("evenement",event);
         }
         
 }
@@ -407,7 +412,7 @@ onChange={this.onChange}
                 <DialogContent>
                 <DialogContentText id="alert-dialog-description">
                 <Typography variant="h6"style={{ color:'green'}}>
-                {this.state.message}
+                {this.state.loader ? <Loader/> : this.state.message}
                 </Typography>
               
                 </DialogContentText>

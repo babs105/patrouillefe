@@ -86,7 +86,7 @@ export default function ListEventAssiter(props) {
   const [rowsPerPage, setRowsPerPage] = React.useState(5);  
 
    useEffect(() => {    
-          setLoader(true)
+          // setLoader(true)
           // setIdPatrouille(window.localStorage.getItem('idPatrouille'));
           // intervalID = setInterval(
           //   () => {  
@@ -111,15 +111,15 @@ export default function ListEventAssiter(props) {
 //   setData1(props.dataToAssist);
 // });
 
-const loadAllEvenementEnCoursToAssister = () => {
- setLoader(true)
-  evenementService.getAllEvenementEnCoursToAssister()
-  .then((res) => {
-      // setData1(res);
-      setLoader(false)
-      console.log(data1);  
-  });   
-}
+// const loadAllEvenementEnCoursToAssister = () => {
+//  setLoader(true)
+//   evenementService.getAllEvenementEnCoursToAssister()
+//   .then((res) => {
+//       // setData1(res);
+//       setLoader(false)
+//       console.log(data1);  
+//   });   
+// }
 
  const handleOpen = (idEvent,typeEvent) => {
     setIdEvent(idEvent);
@@ -251,6 +251,7 @@ const handleClose = () => {
 // }
 
 const deBaliserEvent = () =>{
+  setLoader(true)
   let data = {
     idEvent:idEvent,
     dateDeBalisage:date,
@@ -260,13 +261,17 @@ evenementService.deBaliserEvent(data)
 .then((res) => {
 if(res.error){
   setMessage("Erreur Erreur  réesseyez");
+  setLoader(false)
+
 }else{
   setMessage("Evenement debalisé avec succes");
+  setLoader(false)
 }
 
 }); 
 }
 const assisterAccident = () =>{
+  setLoader(true)
   let data = {
     idEvent:idEvent,
     heureArriveGen:heureArriveGen,
@@ -283,8 +288,10 @@ evenementService.assisterAccident(data)
 .then((res) => {
 if(res.error){
   setMessage("Erreur Erreur  réesseyez");
+  setLoader(false)
 }else{
   setMessage("Mise à jour  avec succes");
+  setLoader(false)
 }
 
 }); 
@@ -293,6 +300,7 @@ if(res.error){
 
 
 const toRemorquer = () =>{
+  setLoader(true)
     let data = {
       idEvent:idEvent,
       action:action,
@@ -301,12 +309,14 @@ const toRemorquer = () =>{
     .then((res) => {
       if(res.error){
         setMessage("Erreur Erreur  ");
+        setLoader(false)
       }else{
         setMessage("Ajout  Evenement à remorquer avec succes");
+        setLoader(false)
       }
     
   }); 
-    console.log("data",data);
+    // console.log("data",data);
   
   }
 
@@ -646,7 +656,7 @@ let i=0;
                 <Grid style={{marginTop:'5px'}}>
                 <DialogActions>
                 <Typography variant="h6"style={{ color:'green'}}>
-                {message}
+                  {loader ? <Loader/> : message }
                 </Typography>
                 <Button onClick={handleClose} color="primary" >
                    FERMER
