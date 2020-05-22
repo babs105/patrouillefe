@@ -965,7 +965,7 @@ let i=0;
 
                     <Grid item md={12} sm={12} xs={12}> 
                             <FormControl  className={classes.formControl}>
-                                <InputLabel   id='categorie'>Nature Panne </InputLabel>
+                                <InputLabel   id='originePanne'>Nature Panne </InputLabel>
                                 <Select  
                                     name='originePanne'
                                     id='originePanne'  
