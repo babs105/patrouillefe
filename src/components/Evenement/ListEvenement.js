@@ -229,7 +229,7 @@ const handleClose = () => {
     setHeureFinEvent(event.target.value);  
   };
   const onChangeOriginePanne = event =>{
-   setOriginePanne(event.target.value)
+   setOriginePanne(event.target.value);
   };
   const onChangeOperation = event => {  
     setOperation(event.target.value);  
@@ -238,7 +238,6 @@ const handleClose = () => {
     setMotif(event.target.value);  
   };
   
-
 
   const handleChangePage = (event, newPage) => {  
     setPage(newPage);  
@@ -376,18 +375,7 @@ let i=0;
           </TableHead>  
           <TableBody>  
           {
-          // loader ?(
-          //   <Grid container alignItems="center" justify="center" >
-                    
-          //       <Grid item md={12}>
-          //         <Paper className={classes.paper } >
-          //         <div className={classes.margin}>
-          //           <Loader/> 
-          //         </div> 
-          //       </Paper>
-          //       </Grid>
-          // </Grid>)
-          // :( 
+        
             data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => {  
               return (  
            <TableRow key={row.id}>
@@ -408,9 +396,7 @@ let i=0;
         </TableRow>
                  
               );  
-            })  
-
-  //  )
+            })
    }
           </TableBody>  
         </Table>  
