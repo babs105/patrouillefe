@@ -229,7 +229,7 @@ const handleClose = () => {
     setHeureFinEvent(event.target.value);  
   };
   const onChangeOriginePanne = event =>{
-   setOriginePanne(event.target.vzlue)
+   setOriginePanne(event.target.value)
   };
   const onChangeOperation = event => {  
     setOperation(event.target.value);  
@@ -965,7 +965,7 @@ let i=0;
 
                     <Grid item md={12} sm={12} xs={12}> 
                             <FormControl  className={classes.formControl}>
-                                <InputLabel   id='originePanne'>Nature Panne </InputLabel>
+                                <InputLabel   id='originePanne'>Nature de la Panne </InputLabel>
                                 <Select  
                                     name='originePanne'
                                     id='originePanne'  
