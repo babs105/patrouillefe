@@ -378,20 +378,7 @@ let i=0;
           </TableHead>  
           <TableBody>  
           {
-        //   loader
-        //    ?(
-        //     <Grid container alignItems="center" justify="center" >
-                    
-        //         <Grid item md={12}>
-        //           <Paper className={classes.paper } >
-        //           <div className={classes.margin}>
-        //             <Loader />
-        //           </div> 
-        //         </Paper>
-        //         </Grid>
-        //   </Grid>
-        // )
-        // :(
+      
             data1.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => {  
               return (  
                 <TableRow key={row.id}>
@@ -414,7 +401,6 @@ let i=0;
               );  
             })  
 
-  //  )
    }
           </TableBody>  
         </Table>  

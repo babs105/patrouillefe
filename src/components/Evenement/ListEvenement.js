@@ -138,7 +138,7 @@ const loadAllEvenementEnCoursNoBaliser = () => {
   .then((res) => {
       setData(res);
       //setLoader(false)
-      // console.log("to balise",data);
+      console.log("to balise",data);
      
   }); 
 
