@@ -101,9 +101,9 @@ function toRemorkEvent(event) {
 }
 
 function getAllEvenementEnCoursNoBaliser() {
-    return axios.get('/evenement/getAllEvenementEnCoursNoBaliser');
-    //.then(handleRegisterResponse)
-      //.then(evenements => evenements);
+    return axios.get('/evenement/getAllEvenementEnCoursNoBaliser').then(handleRegisterResponse)
+    .then(evenements => evenements);
+
   }
 // function getAllEvenementEnCoursBaliser() {
 //     return axios.get('/evenement/getAllEvenementEnCoursBaliser').then(handleRegisterResponse)

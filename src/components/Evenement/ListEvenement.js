@@ -86,8 +86,6 @@ export default function ListCurrentEvent() {
   const [dialogPanne,setDialogPanne]= useState(false);
   const [dialogAccident,setDialogAccident]= useState(false);
   const [message,setMessage] = useState('');
- 
-
   useEffect(() => {    
           
         
