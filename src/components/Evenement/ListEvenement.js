@@ -71,6 +71,7 @@ export default function ListCurrentEvent() {
   const [heureBalisage,setHeureBalisage] = useState('');
   const [matriculeVehicule,setMatriculeVehicule] = useState('');
   const [categorie,setCategorie] = useState('');
+  const [originePanne,setOriginePanne] = useState('');
   const [action,setAction] = useState('');
   const [sens,setSens] = useState('');
   const [heureFinEvent,setHeureFinEvent] = useState('');
@@ -82,6 +83,8 @@ export default function ListCurrentEvent() {
   const [idPat,setIdPat] = useState('');
   const [loader,setLoader] = useState(false)
   const [alertOpen,setAlertOpen]= useState(false);
+  const [dialogPanne,setDialogPanne]= useState(false);
+  const [dialogAccident,setDialogAccident]= useState(false);
   const [message,setMessage] = useState('');
  
 
@@ -174,6 +177,12 @@ const loadAllEvenementEnCoursToAssister = () => {
 const handleOpen = (idEvent,typeEvent) => {
   setIdEvent(idEvent);
   setTypeEvent(typeEvent);
+  if(typeEvent==='PANNE'){
+    setDialogPanne(true)
+  }
+  if(typeEvent==='ACCIDENT'){
+    setDialogAccident(true)
+  }
   setAlertOpen(true);
   setMessage('');
   setHeureBalisage('');
@@ -184,6 +193,8 @@ const handleOpen = (idEvent,typeEvent) => {
  
 const handleClose = () => {
       setAlertOpen(false);
+      setDialogPanne(false)
+      setDialogAccident(false)
       // setMessage('recharger');
       // loadAllEvenementEnCoursNoBaliser();
       // loadAllEvenementEnCoursToAssister();
@@ -217,7 +228,9 @@ const handleClose = () => {
   const onChangeHeureFinEvent = event => {  
     setHeureFinEvent(event.target.value);  
   };
-
+  const onChangeOriginePanne = event =>{
+   setOriginePanne(event.target.vzlue)
+  };
   const onChangeOperation = event => {  
     setOperation(event.target.value);  
   };
@@ -267,6 +280,7 @@ const baliserEvent = () =>{
      idPatrouille:idPat,
      heureBalisage:heureBalisage,
      operation:operation,
+     originePanne:originePanne,
      categorieVBalise:categorie,
      matriculeVehicule:matriculeVehicule
   }
@@ -411,78 +425,7 @@ let i=0;
         onChangeRowsPerPage={handleChangeRowsPerPage}  
       />  
     </Paper>  
-
-
-    {/* <Paper  style={{marginTop:'20px'}} className={classes.root}>  
-    <Typography variant="h5" style={{ color:'red',display: 'flex',justifyContent: 'center'}} >Evenements Annocés en Cours</Typography>
-      <TableContainer className={classes.container}>  
-        <Table stickyHeader aria-label="sticky table">  
-        <TableHead>  
-        <TableRow>
-        <TableCell align="center">N°: </TableCell>
-            <TableCell align="center">DATE</TableCell>
-            <TableCell align="center">HEURE DEBUT  </TableCell>
-            <TableCell align="center">NATURE EVENEMENT</TableCell>
-            <TableCell align="center">PK </TableCell>
-            <TableCell align="center">CATEGORIE </TableCell>
-            <TableCell align="center">SECTEUR </TableCell>
-        </TableRow>
-          </TableHead>  
-          <TableBody>  
-          {
-          // loader ?(
-          //   <Grid container alignItems="center" justify="center" >
-                    
-          //       <Grid item md={12}>
-          //         <Paper className={classes.paper } >
-          //         <div className={classes.margin}>
-          //           <Loader/> 
-          //         </div> 
-          //       </Paper>
-          //       </Grid>
-          // </Grid>)
-          // :( 
-            data1.slice(page1 * rowsPerPage1, page1 * rowsPerPage1 + rowsPerPage1).map(row => {  
-              return (  
-           <TableRow key={row.id}>
-                  <TableCell align="center">{i=i+1}</TableCell>
-                <TableCell align="center" component="th" scope="row">
-                    {row.dateDebutEvent}
-                </TableCell>
-                <TableCell align="center">{row.heureDebutEvent}</TableCell>
-                <TableCell align="center">{row.typeEvenement}</TableCell>
-                <TableCell align="center">{row.pointKilometrique}</TableCell>
-                <TableCell align="center">{row.categorieV}</TableCell>
-                <TableCell align="center">{row.secteur}</TableCell> 
-                <TableCell align="right" > <Button variant="contained" color="primary" onClick={()=>handleOpen(row.id,row.typeEvenement)}> 
-                 Suivre
-            </Button></TableCell>
-                <TableCell align="right" onClick={() => editEvenement(row.id)}><CreateIcon /></TableCell>
-                <TableCell align="right" onClick={() => this.deletePatrouille(row.id)}><DeleteIcon /></TableCell> 
-        </TableRow>
-                 
-              );  
-            })  
-
-  //  )
-   }
-          </TableBody>  
-        </Table>  
-      </TableContainer>  
-      <TablePagination  
-        rowsPerPageOptions={[5, 10, 15]}  
-        component="div"  
-        count={data1.length}  
-        rowsPerPage={rowsPerPage1}  
-        page={page1}  
-        onChangePage={handleChangePage}  
-        onChangeRowsPerPage={handleChangeRowsPerPage}  
-      />  
-    </Paper>   */}
-
-
-
-
+{/* 
        <Dialog open={alertOpen}
                
                 onClose={handleClose}
@@ -490,7 +433,7 @@ let i=0;
                 <DialogTitle id="alert-dialog-title">{"SUIVI EVENEMENT"}</DialogTitle>
                 <DialogContent  className={classes.widthDialog}>
                 <DialogContentText id="alert-dialog-description">
-                {/* {message} */}
+                
                 </DialogContentText>
                 <form>
                 <Grid container justify="center"spacing={4}>
@@ -506,7 +449,7 @@ let i=0;
                                 value={action} 
                                 onChange={onChangeAction}
                                 >
-                                {/* <MenuItem value="Annuler" key={1} name="categorie">Annuler</MenuItem> */}
+                                
                               <MenuItem value="Baliser" key={2} name="categorie">Baliser</MenuItem> 
                           </Select>
                          </FormControl> 
@@ -597,7 +540,7 @@ let i=0;
                                     >
                                   <MenuItem value="Annuler" key={1} name="categorie">Annuler</MenuItem>
                                   <MenuItem value="Baliser" key={2} name="categorie">Baliser</MenuItem> 
-                                  {/* <MenuItem value="Remorquer " key={3} name="categorie">Remorquer</MenuItem>  */}
+                                  
                             </Select>
                         </FormControl> 
                       </Grid>
@@ -746,8 +689,7 @@ let i=0;
                                     >
                                     <MenuItem value="A1"key={1} name="autoroute">A1</MenuItem>
                                     <MenuItem value="A2"key={2} name="autoroute">A2</MenuItem>  
-                                    {/* <MenuItem value="SINDIA-MBOUR"key={3} name="typeEvenement">SINDIA-MBOUR</MenuItem>
-                                     <MenuItem value="BAMBEY-DIOURBEL-TOUBA"key={4} name="typeEvenement">BAMBEY-DIOURBEL-TOUBA</MenuItem>    */}
+                                   
                             </Select>
                         </FormControl> 
                         </Grid>
@@ -759,7 +701,7 @@ let i=0;
                                 variant="outlined"
                                 label="Distance"
                                 name="distance"
-                                // type="number"
+                                
                                 value={distance}
                                 onChange={onChangeDistance}
                                 className={classes.textField}
@@ -778,8 +720,7 @@ let i=0;
                                     >
                                     <MenuItem value="SENS-1"key={1} name="sens">SENS-1</MenuItem>
                                     <MenuItem value="SENS-2"key={2} name="sens">SENS-2</MenuItem>  
-                                    {/* <MenuItem value="SINDIA-MBOUR"key={3} name="typeEvenement">SINDIA-MBOUR</MenuItem>
-                                     <MenuItem value="BAMBEY-DIOURBEL-TOUBA"key={4} name="typeEvenement">BAMBEY-DIOURBEL-TOUBA</MenuItem>    */}
+                                   
                             </Select>
                         </FormControl> 
                    </Grid>
@@ -813,8 +754,305 @@ let i=0;
                    FERMER
                 </Button>
         </DialogActions>
-      </Dialog>
+      </Dialog> */}
 
+{/* dialogue Accident */}
+<Dialog open={dialogAccident}
+               
+                onClose={handleClose}
+                >
+                <DialogTitle id="alert-dialog-title">{"SUIVI EVENEMENT"}</DialogTitle>
+                <DialogContent  className={classes.widthDialog}>
+                <DialogContentText id="alert-dialog-description">
+                {/* {message} */}
+                </DialogContentText>
+                <form>
+                <Grid container justify="center"spacing={4}>
+                     
+                      
+                        <Grid item md={12} sm={12} xs={12}> 
+                        <FormControl  className={classes.formControl}>
+                            <InputLabel   id='action'>Action</InputLabel>
+                            <Select  
+                                name='action'
+                                id='action'  
+                                value={action} 
+                                onChange={onChangeAction}
+                                >
+                                {/* <MenuItem value="Annuler" key={1} name="categorie">Annuler</MenuItem> */}
+                              <MenuItem value="Baliser" key={2} name="categorie">Baliser</MenuItem> 
+                          </Select>
+                         </FormControl> 
+                    </Grid>
+                   <br/>
+                        {action ==='Baliser'?
+                        (
+                          <div>
+                         <Grid item md={12} sm={12} xs={12}>
+                            <TextField
+                                    id="heureBalisage"
+                                    variant="outlined"
+                                    label="Heure Balisage "
+                                    name="heureBalisage"
+                                    type="time"
+                                    value={heureBalisage}
+                                    onChange={onChangeHeure}
+                                    className={classes.textField}
+                                    InputLabelProps={{
+                                    shrink: true,
+                                    }}
+                                /> 
+                        </Grid>
+                        <br/>
+                        <Grid item md={12} sm={12} xs={12}>
+                       <TextField
+                                id="matriculeVehicule"
+                                variant="outlined"
+                                label="Matricule Vehicule"
+                                name="matriculeVehicule"
+                                
+                                value={matriculeVehicule}
+                                onChange={onChangeMatriculeVehicule}
+                                className={classes.textField}
+                            
+                            />
+                             
+                            </Grid>
+                        <Grid item md={12} sm={12} xs={12}> 
+                                <FormControl  className={classes.formControl}>
+                                    <InputLabel   id='categorie'>Categorie </InputLabel>
+                                    <Select  
+                                        name='categorie'
+                                        id='categorie'  
+                                        value={categorie} 
+                                        onChange={onChangeCategorie}
+                                       
+                                        >
+                                      <MenuItem value="MOTO"key={1} name="categorie">MOTO</MenuItem>
+                                      <MenuItem value="VL"key={2} name="categorie">VL</MenuItem>  
+                                      <MenuItem value="PL"key={3} name="categorie">PL</MenuItem>
+                                      <MenuItem value="TC"key={4} name="categorie">TC</MenuItem>   
+                                
+                                   
+                                </Select>
+                            </FormControl> 
+                        </Grid>
+                        <br/>
+                        <Grid item md={12} sm={12} xs={12}> 
+                      <FormControl  className={classes.formControl}>
+                          <InputLabel   id='operation'>Autre Action  à faire </InputLabel>
+                          <Select  
+                              name='operation'
+                              id='operation'  
+                              value={operation} 
+                              onChange={onChangeOperation}
+                              >
+                            <MenuItem value="assister"key={1} name="operation">A Assister</MenuItem>
+
+                      </Select>
+                  </FormControl> 
+              </Grid>
+              </div>
+                      ):null
+                      }
+                </Grid>
+                    <Grid container justify="center"style={{marginTop:'5px'}} spacing={5} alignItems="center">
+                        <Grid item md={6} sm={4} xs={12}>
+                          <Button variant="contained"  color="primary" fullWidth onClick={ action === 'Baliser'? baliserEvent:annulerEvent } >Valider</Button>
+                       </Grid>
+                    </Grid>
+                 
+                </form>
+               
+            
+                </DialogContent>
+                <DialogActions>
+         
+              <Typography variant="h6"style={{ color:'green'}}>
+                {loader ? <Loader/> : message }
+              </Typography>
+
+                <Button onClick={handleClose} color="primary" autoFocus>
+                   FERMER
+                </Button>
+        </DialogActions>
+      </Dialog>
+      
+{/*  dialogAccident*/}
+
+
+{/* dialogue panne*/}
+<Dialog open={dialogPanne}
+               
+                onClose={handleClose}
+                >
+                <DialogTitle id="alert-dialog-title">{"SUIVI EVENEMENT"}</DialogTitle>
+                <DialogContent  className={classes.widthDialog}>
+                <DialogContentText id="alert-dialog-description">
+                {/* {message} */}
+                </DialogContentText>
+                <form>
+                <Grid container justify="center"spacing={4}>
+                <div>
+                        <Grid item md={12} sm={12} xs={12}> 
+                            <FormControl  className={classes.formControl}>
+                                <InputLabel   id='action'>Action</InputLabel>
+                                <Select  
+                                    name='action'
+                                    id='action'  
+                                    value={action} 
+                                    onChange={onChangeAction}
+                                    >
+                                  <MenuItem value="Annuler" key={1} name="categorie">Annuler</MenuItem>
+                                  <MenuItem value="Baliser" key={2} name="categorie">Baliser</MenuItem> 
+                                  {/* <MenuItem value="Remorquer " key={3} name="categorie">Remorquer</MenuItem>  */}
+                            </Select>
+                        </FormControl> 
+                      </Grid>
+                    <br/>
+                    {action ==='Baliser'?
+                    (
+                    <div>
+                     <Grid item md={12}  sm={12} xs={12}>
+                        <TextField
+                                id="heureBalisage"
+                                variant="outlined"
+                                label="Heure Balisage "
+                                name="heureBalisage"
+                                type="time"
+                                value={heureBalisage}
+                                onChange={onChangeHeure}
+                                className={classes.textField}
+                                InputLabelProps={{
+                                shrink: true,
+                                }}
+                            /> 
+                    </Grid>
+                    <br/>
+                    <Grid item md={12} sm={12} xs={12}>
+                    <TextField
+                                id="matriculeVehicule"
+                                variant="outlined"
+                                label="Matricule Vehicule"
+                                name="matriculeVehicule"
+                                
+                                value={matriculeVehicule}
+                                onChange={onChangeMatriculeVehicule}
+                                className={classes.textField}
+                            
+                            />
+                             
+                            </Grid>
+                    <Grid item md={12} sm={12} xs={12}> 
+                            <FormControl  className={classes.formControl}>
+                                <InputLabel   id='categorie'>Categorie </InputLabel>
+                                <Select  
+                                    name='categorie'
+                                    id='categorie'  
+                                    value={categorie} 
+                                    onChange={onChangeCategorie}
+                                   
+                                    >
+                                  <MenuItem value="MOTO"key={1} name="categorie">MOTO</MenuItem>
+                                  <MenuItem value="VL"key={2} name="categorie">VL</MenuItem>  
+                                  <MenuItem value="PL"key={3} name="categorie">PL</MenuItem>
+                                  <MenuItem value="TC"key={4} name="categorie">TC</MenuItem>   
+                            
+                               
+                            </Select>
+                        </FormControl> 
+                    </Grid>
+
+                    <Grid item md={12} sm={12} xs={12}> 
+                            <FormControl  className={classes.formControl}>
+                                <InputLabel   id='categorie'>Nature Panne </InputLabel>
+                                <Select  
+                                    name='originePanne'
+                                    id='originePanne'  
+                                    value={originePanne} 
+                                    onChange={onChangeOriginePanne}
+                                   
+                                    >
+                                  <MenuItem value="Crevaision"key={1} name="originePanne">Crevaision</MenuItem>
+                                  <MenuItem value="Carburant"key={2} name="originePanne">Carburant</MenuItem>  
+                                  <MenuItem value="Chauffage"key={3} name="originePanne">Chauffage</MenuItem>
+                                  <MenuItem value="Moteur"key={3} name="originePanne">Moteur</MenuItem>
+                                  <MenuItem value="Autres"key={4} name="originePanne">Autres</MenuItem>   
+                            
+                               
+                            </Select>
+                        </FormControl> 
+                    </Grid>
+                    <Grid item md={12} sm={12} xs={12}> 
+                      <FormControl  className={classes.formControl}>
+                          <InputLabel   id='operation'>Autre Action  à faire </InputLabel>
+                          <Select  
+                              name='operation'
+                              id='operation'  
+                              value={operation} 
+                              onChange={onChangeOperation}
+                              >
+                            <MenuItem value="assister"key={1} name="operation">A Assister</MenuItem>
+                            <MenuItem value="remorquer"key={2} name="operation"> A Remorquer</MenuItem>  
+                            
+                      
+                         
+                      </Select>
+                  </FormControl> 
+              </Grid>
+              </div>
+
+                    ):action ==='Annuler'?
+                    (
+                      <Grid container justify="center" spacing={4}>
+                          <Grid item md={12} sm={12} xs={12}> 
+                          <FormControl  className={classes.formControl}>
+                          <InputLabel   id='motif'> Motif </InputLabel>
+                          <Select  
+                              name='motif'
+                              id='motif'  
+                              value={motif} 
+                              onChange={onChangeMotif}
+                              >
+                            <MenuItem value="Reparti Seul"key={1} name="motif">Reparti Seul</MenuItem>
+                            <MenuItem value="Non Localiser"key={2} name="motif">Non Localiser</MenuItem>  
+                            
+                      
+                         
+                      </Select>
+                  </FormControl> 
+              </Grid>
+              </Grid>
+
+              
+                    ):null
+                  }
+                    
+                    </div>
+                </Grid>
+                    <Grid container justify="center"style={{marginTop:'5px'}} spacing={5} alignItems="center">
+                        <Grid item md={6} sm={4} xs={12}>
+                          <Button variant="contained"  color="primary" fullWidth onClick={ action === 'Baliser'? baliserEvent:annulerEvent } >Valider</Button>
+                       </Grid>
+                    </Grid>
+                 
+                </form>
+               
+            
+                </DialogContent>
+                <DialogActions>
+         
+              <Typography variant="h6"style={{ color:'green'}}>
+                {loader ? <Loader/> : message }
+              </Typography>
+
+                <Button onClick={handleClose} color="primary" autoFocus>
+                   FERMER
+                </Button>
+        </DialogActions>
+      </Dialog>
+      
+{/*  dialogue Panne*/}
       {data1?<ListEventForAssistance assister={data1} />:null} 
       {data2?<ListEventForRemorquage remorquer={data2} />:null} 
       {data3?<ListEventAdeBaliser debaliser={data3} />:null} 
