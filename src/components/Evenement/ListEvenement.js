@@ -133,7 +133,7 @@ const getUserPatrouilleurById = () => {
 
 const loadAllEvenementEnCoursNoBaliser = () => {
 //  setLoader(true)
- 
+ console.log('lllllloaddd event encoue')
   evenementService.getAllEvenementEnCoursNoBaliser()
   .then((res) => {
       setData(res);
