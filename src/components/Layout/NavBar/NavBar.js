@@ -49,8 +49,7 @@ class NavBar extends Component{
                     this.setState({user:data.user});
                         window.localStorage.setItem("role", data.user.role);
                         window.localStorage.setItem("idUser", data.user.id);
-                        window.localStorage.setItem("loginMatricule", data.user.username
-                        );
+                        window.localStorage.setItem("loginMatricule", data.user.username);
             });
          }
       }

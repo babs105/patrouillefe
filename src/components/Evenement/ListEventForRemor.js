@@ -59,6 +59,8 @@ export default function ListForRemorquage(props) {
   const [lieu,setLieu] = useState('');
   const [matriculeRemorque,setMatriculeRemorque] = useState('');
   const [heureDarriveRemorque,setHeureDarriveRemorque] = useState('');
+  const [heureAnnonce,setHeureAnnonce] = useState('');
+  const [heureDepart,setHeureDepart] = useState('');
   const [date,setDate] = useState();
   const [typeEvent,setTypeEvent] =  useState('');
   const [heureDepGen,setHeureDepGen] = useState('');
@@ -134,7 +136,15 @@ const handleClose = () => {
       setHeureDarriveRemorque(event.target.value);  
     
     };
+    const onChangeHeureAnnonce= event => {  
+      setHeureAnnonce(event.target.value);  
     
+    };
+    const onChangeHeureDepart= event => {  
+      setHeureDepart(event.target.value);  
+    
+    };
+
     const onChangeDate = event => {  
       setDate(event.target.value);  
     
@@ -206,6 +216,8 @@ const remorkVehicule = () =>{
         heureDarriveRemorque:heureDarriveRemorque,
         matriculeRemorque:matriculeRemorque,
         gareDepot:lieu+" "+ gareDepot,
+        heureAnnonce:heureAnnonce,
+        heureDepart:heureDepart
       }
   evenementService.remorkVehicule(data)
   .then((res) => {
@@ -426,7 +438,38 @@ let i=0;
                              />      
                      </Grid>
                      <br/>
-                     
+                     <Grid item md={12}  sm={12} xs={12}>
+                         <TextField
+                                 id="heureAnnonce"
+                                 variant="outlined"
+                                 label="Heure d'annonce"
+                                 name="heureAnnonce"
+                                 type="time"
+                                 value={heureAnnonce}
+                                 onChange={onChangeHeureAnnonce}
+                                 className={classes.textField}
+                                 InputLabelProps={{
+                                 shrink: true,
+                                 }}
+                             /> 
+                     </Grid>
+                     <br/>
+                     <Grid item md={12}  sm={12} xs={12}>
+                         <TextField
+                                 id="heureDepart"
+                                 variant="outlined"
+                                 label="Heure départ"
+                                 name="heureDepart"
+                                 type="time"
+                                 value={heureDepart}
+                                 onChange={onChangeHeureDepart}
+                                 className={classes.textField}
+                                 InputLabelProps={{
+                                 shrink: true,
+                                 }}
+                             /> 
+                     </Grid>
+                     <br/>
                      <Grid item md={12}  sm={12} xs={12}>
                          <TextField
                                  id="heureDarriveRemorque"
@@ -447,7 +490,7 @@ let i=0;
                          <TextField
                                  id="heureRemorquage"
                                  variant="outlined"
-                                 label="Heure Remorquée"
+                                 label="Heure Fin Intervention"
                                  name="heureRemorquage"
                                  type="time"
                                  value={heureRemorquage}
@@ -644,6 +687,41 @@ let i=0;
                      <br/>
                      <Grid item md={12}  sm={12} xs={12}>
                          <TextField
+                                 id="heureAnnonce"
+                                 variant="outlined"
+                                 label="Heure d'annonce"
+                                 name="heureAnnonce"
+                                 type="time"
+                                 value={heureAnnonce}
+                                 onChange={onChangeHeureAnnonce}
+                                 className={classes.textField}
+                                 InputLabelProps={{
+                                 shrink: true,
+                                 }}
+                             /> 
+                     </Grid>
+                     
+                     <br/>
+                  
+                     
+                     <Grid item md={12}  sm={12} xs={12}>
+                         <TextField
+                                 id="heureDepart"
+                                 variant="outlined"
+                                 label="Heure départ"
+                                 name="heureDepart"
+                                 type="time"
+                                 value={heureDepart}
+                                 onChange={onChangeHeureDepart}
+                                 className={classes.textField}
+                                 InputLabelProps={{
+                                 shrink: true,
+                                 }}
+                             /> 
+                     </Grid>
+                     <br/>
+                     <Grid item md={12}  sm={12} xs={12}>
+                         <TextField
                                  id="heureDarriveRemorque"
                                  variant="outlined"
                                  label="Heure d'arrivée"
@@ -662,7 +740,7 @@ let i=0;
                          <TextField
                                  id="heureRemorquage"
                                  variant="outlined"
-                                 label="Heure Remorquée"
+                                 label="Heure Fin Intervention"
                                  name="heureRemorquage"
                                  type="time"
                                  value={heureRemorquage}

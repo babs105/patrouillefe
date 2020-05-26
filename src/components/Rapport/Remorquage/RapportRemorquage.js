@@ -126,15 +126,20 @@ let i=0;
         <TableRow>
         <TableCell align="center" style={{fontFamily:'bold'}}>N°: </TableCell>
             <TableCell align="center">DATE  </TableCell>
-            <TableCell align="center">OBJET ENLEVEMENT </TableCell>
-            <TableCell align="center">MATRICULE  </TableCell>
-            <TableCell align="center">CATEGORIE </TableCell>
+            <TableCell align="center">H.D'ANNONCE </TableCell>
+            <TableCell align="center">H.DEPART </TableCell>
+            <TableCell align="center">T.REACTION </TableCell>
             <TableCell align="center">H.D'ARRIVEE </TableCell>
+            <TableCell align="center">D.TRAJET </TableCell>
             <TableCell align="center">H.FIN INTERVENTION  </TableCell>
+            <TableCell align="center">D.INTERVENTION </TableCell>
             <TableCell align="center">DEPANNEUR</TableCell>
             <TableCell align="center">REMORQUE </TableCell>
             <TableCell align="center">DISTANCE PARCOURUE </TableCell> 
             <TableCell align="center">PKA </TableCell> 
+            <TableCell align="center">OBJET ENLEVEMENT </TableCell>
+            <TableCell align="center">MATRICULE  </TableCell>
+            <TableCell align="center">CATEGORIE </TableCell>
             <TableCell align="center">GARE DEPOT </TableCell> 
             <TableCell align="center">H.ARRIVE GEN  </TableCell>
             <TableCell align="center">H.DEPART GEN </TableCell>
@@ -166,15 +171,20 @@ let i=0;
                 <TableCell align="center" component="th" scope="row">
                     {row.date}
                 </TableCell>
-                <TableCell align="center">{row.objetEnlevement}</TableCell>
-                <TableCell align="center">{row.numeroMatricule}</TableCell>
-                <TableCell align="center">{row.categorieVehicule}</TableCell>
+                <TableCell align="center">{row.heureAnnonce}</TableCell>
+                <TableCell align="center">{row.heureDepart}</TableCell>
+                <TableCell align="center">{row.tempsReaction}</TableCell>
                 <TableCell align="center">{row.heureDarriveDepanneur}</TableCell>
+                <TableCell align="center">{row.dureeTrajet}</TableCell>
                 <TableCell align="center">{row.heureFinIntervention}</TableCell>
+                <TableCell align="center">{row.dureeIntervention}</TableCell>
                 <TableCell align="center">{row.remorqueur}</TableCell>
                 <TableCell align="center">{row.matriculeRemorqueur}</TableCell>
                 <TableCell align="center">{row.kmParcouru}</TableCell>
                 <TableCell align="center">{row.pk}</TableCell>
+                <TableCell align="center">{row.objetEnlevement}</TableCell>
+                <TableCell align="center">{row.numeroMatricule}</TableCell>
+                <TableCell align="center">{row.categorieVehicule}</TableCell>
                 <TableCell align="center">{row.gareDepot}</TableCell>
                 <TableCell align="center">{row.heureArriveGendarmes}</TableCell>
                 <TableCell align="center">{row.heureDepartGendarmes}</TableCell>
